@@ -1,3 +1,23 @@
-<p>
-  peliculas-ui works!
-</p>
+<h1>Peliculas app, UI ver 1.0.0</h1>
+<h2>Tabla de peliculas</h2>
+<table border="2">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Pelicula</th>
+      <th>Director</th>
+      <th>Sinopsis</th>
+      <th>Clasificacion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let peli of peliculasArray">
+      <td>{{peli.id}}</td>
+      <td>{{peli.titulo}}</td>
+      <td>{{peli.director}}</td>
+      <td>{{peli.sinopsis}}</td>
+      <td>{{peli.clasificacion}}</td>
+    </tr>
+  </tbody>
+</table>
+

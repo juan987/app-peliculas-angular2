@@ -17,6 +17,6 @@ import { PeliculasUiComponent } from './peliculas-ui/peliculas-ui.component';
     HttpModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, PeliculasUiComponent]
 })
 export class AppModule { }
