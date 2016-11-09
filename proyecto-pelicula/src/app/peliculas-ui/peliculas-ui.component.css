@@ -1,4 +1,4 @@
-  .heroes li {
+  tbody tr {
     cursor: pointer;
     position: relative;
     left: 0;
@@ -7,12 +7,13 @@
     padding: .3em 0;
     height: 1.6em;
     border-radius: 4px;
+    text-align: right;
   }
-  .heroes li.selected:hover {
+  tbody tr.selected:hover {
     background-color: #BBD8DC !important;
     color: white;
   }
-  .heroes li:hover {
+  tbody tr:hover {
     color: #607D8B;
     background-color: #DDD;
     left: .1em;
