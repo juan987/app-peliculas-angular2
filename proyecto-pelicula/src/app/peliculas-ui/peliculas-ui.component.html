@@ -126,7 +126,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- tr><td>prueba 1</td></tr -->
+                    <tr *ngFor="let peli of getDatos()">
+                      <td>{{peli.id}}</td>
+                      <td>{{peli.titulo}}</td>
+                      <td>{{peli.director}}</td>
+                      <td>{{peli.sinopsis}}</td>
+                      <td>{{peli.clasificacion}}</td>
+                    </tr>
                 </tbody>
             </table>
         </div>

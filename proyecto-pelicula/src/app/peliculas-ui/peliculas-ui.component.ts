@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {PeliculaPojo} from '../modelo-datos/Pelicula-Pojo';
+import {ServicioPeliculasDaoService} from '../servicios/Servicio-Peliculas-Dao.Service';
 
 @Component({
   selector: 'app-peliculas-ui',
@@ -6,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./peliculas-ui.component.css']
 })
 export class PeliculasUiComponent implements OnInit {
-
-  constructor() { }
+  private peliculaPojo: PeliculaPojo;
+  constructor() { 
+    this.peliculaPojo = new PeliculaPojo("","","","","","")
+  }
 
   ngOnInit() {
   }
