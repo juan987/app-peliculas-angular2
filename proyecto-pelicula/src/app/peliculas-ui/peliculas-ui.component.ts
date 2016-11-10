@@ -5,15 +5,24 @@ import {ServicioPeliculasDaoService} from '../servicios/Servicio-Peliculas-Dao.S
 @Component({
   selector: 'app-peliculas-ui',
   templateUrl: './peliculas-ui.component.html',
-  styleUrls: ['./peliculas-ui.component.css']
+  styleUrls: ['./peliculas-ui.component.css'],
+  providers: [ServicioPeliculasDaoService]
 })
 export class PeliculasUiComponent implements OnInit {
+
   private peliculaPojo: PeliculaPojo;
-  constructor() { 
+  private listaDePeliculas: PeliculaPojo[];
+
+  constructor(private servicioPeliculasDaoService: ServicioPeliculasDaoService) { 
     this.peliculaPojo = new PeliculaPojo("","","","","","")
+    this.listaDePeliculas = servicioPeliculasDaoService.getListaPeliculas();
   }
 
   ngOnInit() {
+  }
+
+  getDatos2(): PeliculaPojo[]{
+    return this.listaDePeliculas;
   }
 
   getDatos(): Pelicula[]{

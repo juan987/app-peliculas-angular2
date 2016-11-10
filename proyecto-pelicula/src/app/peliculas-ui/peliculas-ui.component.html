@@ -126,12 +126,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let peli of getDatos()">
+                    <tr *ngFor="let peli of getDatos2()">
                       <td>{{peli.id}}</td>
                       <td>{{peli.titulo}}</td>
                       <td>{{peli.director}}</td>
                       <td>{{peli.sinopsis}}</td>
-                      <td>{{peli.clasificacion}}</td>
+                      <td>{{peli.fecha}}</td>
+                      <td>{{peli.valoracion}}</td>
+                      <td class='borrar'><button>Borrar</button></td>
+                      <td class='modificar'><button>Seleccionar</button></td>
                     </tr>
                 </tbody>
             </table>
