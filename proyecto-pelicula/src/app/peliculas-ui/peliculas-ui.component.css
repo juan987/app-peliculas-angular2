@@ -18,3 +18,24 @@
     background-color: #DDD;
     left: .1em;
   }
+
+
+  /*  
+    Componentes css del proyecto peliculas con jquery y bootstrap
+  */
+
+  	#rosa input:valid {
+		background: pink;
+	}
+	#rosa input:invalid {
+		background: red;
+	}
+
+	.elementoOculto {
+		display: none;
+	}
+	
+	footer#pie > section{
+    padding-right: 10px;
+    text-align: center;
+}

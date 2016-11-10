@@ -21,3 +21,120 @@
   </tbody>
 </table>
 
+<h1>Componentes del proyecto pelicula Jquery con bootstrap</h1>
+<div class="container">
+    <!-- Cosas que no uso o he cambiado 
+    	<p>Nombre: <input type="text" name="nombre" required pattern="([a-zA-ZñÑ]{3,}uben|Victor)" /></p>
+        <p><input type="submit" value="enviar"></p>
+    -->
+    <!-- En casa el 27oct16 -->
+    <input class="elementoOculto" type="button" id="serializarFormulario" value="Serializar formulario"/>
+    <div class="elementoOculto" id="resultadoSerializacion"></div>
+    <!-- FIN de En casa el 27oct16 -->
+
+    <h1>Formulario de peliculas</h1>
+	<form role="form" class="form-horizontal" id="miFormulario" action="#">
+    <fieldset>
+        <legend>Rellene los datos solicitados:</legend>
+        <div id="rosa">
+            <div class="form-group">
+                <label for="id_peli" class="col-sm-2 control-label">Id de la película</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="id_peli" name="id" disabled  />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="titulo" class="col-sm-2 control-label">Título</label> 
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="titulo" name="titulo" required autofocus/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="director" class="col-sm-2 control-label">Director</label> 
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="director" name="director" required  />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="sinopsis" class="col-sm-2 control-label">Sinopsis</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="sinopsis" name="sinopsis" required  />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="fecha" class="col-sm-2 control-label">Fecha</label> 
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" id="fecha" name="fecha" required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="valoracion" class="col-sm-2 control-label">Valoración</label> 
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="valoracion" list="cafes" name="valoracion" required>
+                </div>
+                <datalist id="cafes">
+                    <option label="Mala" 
+                            value="Mala">
+                    <option label="Regular" 
+                            value="Regular">
+                    <option label="Buena" value="Buena">
+                    <option label="Muy Buena" value="Muy Buena">
+                    <option label="Excelente" value="Excelente">
+                </datalist>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="reset" class="btn btn-primary"> 
+                <input type="button" class="btn btn-primary" id="guardar" value="Guardar"/>
+                <input type="button" class="btn btn-primary" id="modificar" value="Modificar"/>
+                <input class="elementoOculto" type="button" id="borrar" value="Borrar"/>
+            </div>
+        </div>
+    </fieldset>
+	</form>
+
+    <h1>Base de Datos de Peliculas</h1>
+
+    <input class="elementoOculto" type="button" id="peticion_ajax" value="Carga con JQuery"/>
+    <div class="elementoOculto" id="contenido_de_ajax">
+
+    </div>
+
+<!-- Tabla mostrando la DB de peliculas -->
+    <section id="tablaPeliculas">
+        <!-- table border="2" -->
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover table-condensed">                
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Título</th>
+                        <th>Director</th>
+                        <th>Sinopsis</th>
+                        <th>Fecha</th>
+                        <th>Valoración</th>
+                        <th>Borrar</th>
+                        <th>Seleccionar</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- tr><td>prueba 1</td></tr -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <footer id="pie">
+        <section>
+            © 2016 Diseñador: Juan Miguel Navarro Lopez
+        </section>
+    </footer>
+</div>
+
