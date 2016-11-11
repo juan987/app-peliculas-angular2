@@ -126,7 +126,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr   #miFila   *ngFor="let peli of getDatos2()"
+                    <!-- tr *ngFor="let peli of getDatos2()"  -->
+                    <tr *ngFor="let peli of pelisListHttp"
                             [class.pruebaFilaClicked]="booleanFilaClicked"
                             (click)="clickEnFila(peli)">
                       <td>{{peli.id}}</td>

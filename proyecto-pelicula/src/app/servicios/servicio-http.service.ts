@@ -6,7 +6,7 @@ import { Observable }     from 'rxjs/Observable';
 
 @Injectable()
 export class ServicioHttpService {
-  private urlGet = 'hgkjhkjhkj';  // URL para get el json con la lista de peliculas
+  private urlGet = 'http://localhost:3000/peliculas';  // URL para get el json con la lista de peliculas
 
   constructor(private http: Http) { }
 
@@ -18,8 +18,13 @@ export class ServicioHttpService {
 
 
   private extractData(res: Response) {
+    console.log("En http service, la response es:   " +res);
     let body = res.json();
+    console.log("En http service, el body es   " +body);
+
     return body.data || { };
+
+    
   }
   private handleError (error: Response | any) {
     // In a real world app, we might use a remote logging infrastructure

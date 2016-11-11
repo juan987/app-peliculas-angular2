@@ -1,0 +1,44 @@
+{
+  "peliculas": [
+    {
+      "titulo": "peli 5 mod",
+      "director": "director 5",
+      "sinopsis": "hyfhoifho ohyfoihyfohofhofollcjv lkehwhehh",
+      "fecha": "2016-11-08",
+      "valoracion": "Excelente",
+      "id": 30
+    },
+    {
+      "titulo": "peli 6",
+      "director": "director 6",
+      "sinopsis": "hyfhoifho ohyfoihyfohofhofollcjv lkehwhehh",
+      "fecha": "2016-11-09",
+      "valoracion": "Excelente",
+      "id": 31
+    },
+    {
+      "titulo": "peli 7",
+      "director": "director 7",
+      "sinopsis": "klefjlkefjle efljkfelijefliujfjlief hliefhjolefiolfhjef lifhefoihoiefhoiefhoef lkefholfhoiefheof hoilhyfeoihfeoihefoiefo lkhiefhefoifeoiefhoi ",
+      "fecha": "2016-11-27",
+      "valoracion": "Regular",
+      "id": 32
+    },
+    {
+      "titulo": "peli 8 modificado",
+      "director": "director 8",
+      "sinopsis": "hhcu",
+      "fecha": "2016-11-26",
+      "valoracion": "Mala",
+      "id": 33
+    },
+    {
+      "titulo": "dfnlsjp",
+      "director": "ñlfjopwfjwdp",
+      "sinopsis": "ñcoñasn",
+      "fecha": "2016-11-12",
+      "valoracion": "Excelente",
+      "id": 34
+    }
+  ]
+}

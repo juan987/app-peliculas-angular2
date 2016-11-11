@@ -23,9 +23,6 @@ export class PeliculasUiComponent implements OnInit {
   mode = 'Observable';
 //Fin de variables para http
 
-
-
-
   private peliculaPojo: PeliculaPojo;
   //private listaDePeliculas: PeliculaPojo[];
   //private servicioPeliculasDaoService: ServicioPeliculasDaoService;
@@ -62,6 +59,9 @@ export class PeliculasUiComponent implements OnInit {
 
     //Con un servicio local
     return this.servicioPeliculasDaoService.getListaPeliculas();
+
+    //Con el servicio http
+    //return this.getPelisHttp();
   }
 
 
@@ -89,12 +89,16 @@ export class PeliculasUiComponent implements OnInit {
                        pelisListHttp => this.pelisListHttp = pelisListHttp,
                        error =>  this.errorMessage = <any>error);
   }
+
+  /*
   addPeliHttp () {
     if (!this.peliculaPojo) { return; }
     this.servicioHttpService.addNuevaPeli(this.peliculaPojo)
                      .subscribe(
                        peliculaPojo  => this.pelisListHttp.push(peliculaPojo),
                        error =>  this.errorMessage = <any>error);
+
+  */
   
 //Fin de metodos relacionados con http
 
