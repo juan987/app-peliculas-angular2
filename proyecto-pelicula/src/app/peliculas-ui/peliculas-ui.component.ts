@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PeliculaPojo} from '../modelo-datos/Pelicula-Pojo';
+import {PeliculaPojo2} from '../modelo-datos/Pelicula-Pojo2';
 import {ServicioPeliculasDaoService} from '../servicios/Servicio-Peliculas-Dao.Service';
 import {ServicioHttpService} from '../servicios/Servicio-Http.Service';
 
@@ -20,6 +21,7 @@ export class PeliculasUiComponent implements OnInit {
 //variables para http 
   errorMessage: string;
   pelisListHttp: PeliculaPojo[];
+  pelisListHttp2: PeliculaPojo2[];
   mode = 'Observable';
 //Fin de variables para http
 
@@ -86,7 +88,7 @@ export class PeliculasUiComponent implements OnInit {
   getPelisHttp() {
     this.servicioHttpService.getListaPeliculas()
                      .subscribe(
-                       pelisListHttp => this.pelisListHttp = pelisListHttp,
+                       pelisListHttp => this.pelisListHttp2 = pelisListHttp,
                        error =>  this.errorMessage = <any>error);
   }
 
