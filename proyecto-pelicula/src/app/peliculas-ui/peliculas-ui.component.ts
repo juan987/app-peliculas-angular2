@@ -11,18 +11,23 @@ import {ServicioPeliculasDaoService} from '../servicios/Servicio-Peliculas-Dao.S
 export class PeliculasUiComponent implements OnInit {
 
   private peliculaPojo: PeliculaPojo;
-  private listaDePeliculas: PeliculaPojo[];
+  //private listaDePeliculas: PeliculaPojo[];
+  //private servicioPeliculasDaoService: ServicioPeliculasDaoService;
 
   constructor(private servicioPeliculasDaoService: ServicioPeliculasDaoService) { 
     this.peliculaPojo = new PeliculaPojo("","","","","","")
-    this.listaDePeliculas = servicioPeliculasDaoService.getListaPeliculas();
+    //this.listaDePeliculas = servicioPeliculasDaoService.getListaPeliculas();
+    //this.servicioPeliculasDaoService = servicioPeliculasDaoService;
   }
 
   ngOnInit() {
   }
 
+
+//para coger los datos de las peliculas
   getDatos2(): PeliculaPojo[]{
-    return this.listaDePeliculas;
+    //return this.listaDePeliculas;
+    return this.servicioPeliculasDaoService.getListaPeliculas();
   }
 
   getDatos(): Pelicula[]{
