@@ -23,6 +23,10 @@ export class PeliculasUiComponent implements OnInit {
   ngOnInit() {
   }
 
+  clickEnFila(): void{
+    console.log("Has hecho click en una fila");
+  }
+
 
 //para coger los datos de las peliculas
   getDatos2(): PeliculaPojo[]{
