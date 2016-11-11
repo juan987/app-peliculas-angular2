@@ -13,6 +13,7 @@ export class PeliculasUiComponent implements OnInit {
   private peliculaPojo: PeliculaPojo;
   //private listaDePeliculas: PeliculaPojo[];
   //private servicioPeliculasDaoService: ServicioPeliculasDaoService;
+  public booleanFilaClicked: boolean = false;
 
   constructor(private servicioPeliculasDaoService: ServicioPeliculasDaoService) { 
     this.peliculaPojo = new PeliculaPojo("","","","","","")
@@ -25,6 +26,7 @@ export class PeliculasUiComponent implements OnInit {
 
   clickEnFila(): void{
     console.log("Has hecho click en una fila");
+    this.booleanFilaClicked = true;
   }
 
 
