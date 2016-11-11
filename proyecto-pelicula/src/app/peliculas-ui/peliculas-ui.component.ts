@@ -61,6 +61,11 @@ export class PeliculasUiComponent implements OnInit {
 
   }
 
+  clickGuardar(): void{
+    console.log("Click en el boton guardar");
+    this.addPeliHttp();
+  }
+
 
 //para coger los datos de las peliculas
   getDatos2(): PeliculaPojo[]{
@@ -99,15 +104,15 @@ export class PeliculasUiComponent implements OnInit {
                        error =>  this.errorMessage = <any>error);
   }
 
-  /*
+  
   addPeliHttp () {
     if (!this.peliculaPojo) { return; }
     this.servicioHttpService.addNuevaPeli(this.peliculaPojo)
                      .subscribe(
                        peliculaPojo  => this.pelisListHttp.push(peliculaPojo),
                        error =>  this.errorMessage = <any>error);
-
-  */
+  }
+  
   
 //Fin de metodos relacionados con http
 

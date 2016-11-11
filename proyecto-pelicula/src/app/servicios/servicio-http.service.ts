@@ -4,6 +4,8 @@ import {PeliculaPojo2} from '../modelo-datos/Pelicula-Pojo2';
 
 import { Http, Response } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
+import { Headers, RequestOptions } from '@angular/http';
+
 
 @Injectable()
 export class ServicioHttpService {
@@ -22,7 +24,7 @@ export class ServicioHttpService {
     console.log("En http service, la response es:   " +res);
     let body = res.json();
     console.log("En http service, el body es   " +body);
-    console.log("En http service, el titulo 0 es   " +body[0].titulo);
+    //console.log("En http service, el titulo 0 es   " +body[0].titulo);
 
 //Si retorno body data, da error.
     //return body.data || { };
@@ -46,8 +48,25 @@ export class ServicioHttpService {
   }
 
 //***********************************************************************************************
-  addNuevaPeli(pelicula: PeliculaPojo): PeliculaPojo{
-    return new PeliculaPojo("","","","","","");
+
+  private urlPost = 'http://localhost:3000/peliculas';  // URL para get el json con la lista de peliculas
+
+  addNuevaPeli (peliculaPojo: PeliculaPojo): Observable<PeliculaPojo> {
+    let nuevaPeliJson = {
+    "titulo": peliculaPojo.getTitulo(),
+    "director": peliculaPojo.getDirector(),
+    "sinopsis": peliculaPojo.getSinopsis(),
+    "fecha": peliculaPojo.getFecha(),
+    "valoracion": peliculaPojo.getValoracion()
+    };
+
+    
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    //return this.http.post(this.urlPost, peliculaPojo, options)
+    return this.http.post(this.urlPost, nuevaPeliJson, options)
+                    .map(this.extractData)
+                    .catch(this.handleError);
   }
 
 }

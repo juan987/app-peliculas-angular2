@@ -8,6 +8,7 @@ export class PeliculaPojo {
                 //La ? es que es opcional
                 ){}
 
+                //Getters
                 setId(id: string): void{
                     this.id = id;
                 }
@@ -28,6 +29,28 @@ export class PeliculaPojo {
                 }
                 setValoracion(valoracion: string): void{
                     this.valoracion = valoracion;
+                }
+
+
+                //Getters
+                getTitulo(): string{
+                    return this.titulo;
+                }
+
+                getDirector(): string{
+                    return this.director;
+                }
+
+                getSinopsis(): string{
+                    return this.sinopsis;
+                }
+
+                getFecha(): string{
+                    return this.fecha;
+                }
+
+                getValoracion(): string{
+                    return this.valoracion;
                 }
 
     toString(): string{
