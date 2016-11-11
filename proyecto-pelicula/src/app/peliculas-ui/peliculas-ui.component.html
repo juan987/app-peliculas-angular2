@@ -128,7 +128,7 @@
                 <tbody>
                     <tr   #miFila   *ngFor="let peli of getDatos2()"
                             [class.pruebaFilaClicked]="booleanFilaClicked"
-                            (click)="clickEnFila(miFila)">
+                            (click)="clickEnFila(peli)">
                       <td>{{peli.id}}</td>
                       <td>{{peli.titulo}}</td>
                       <td>{{peli.director}}</td>
