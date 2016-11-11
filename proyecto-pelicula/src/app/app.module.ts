@@ -19,6 +19,7 @@ import { PeliculasUiComponent } from './peliculas-ui/peliculas-ui.component';
     JsonpModule 
   ],
   providers: [],
-  bootstrap: [AppComponent, PeliculasUiComponent]
+  //bootstrap: [AppComponent, PeliculasUiComponent]
+  bootstrap: [PeliculasUiComponent]
 })
 export class AppModule { }

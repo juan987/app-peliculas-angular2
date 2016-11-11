@@ -64,7 +64,9 @@ export class ServicioHttpService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     //return this.http.post(this.urlPost, peliculaPojo, options)
-    return this.http.post(this.urlPost, nuevaPeliJson, options)
+
+    //FUNCIONA TANTO CON PeliculaPojo como con nuevaPeliJson
+    return this.http.post(this.urlPost, peliculaPojo, options)
                     .map(this.extractData)
                     .catch(this.handleError);
   }

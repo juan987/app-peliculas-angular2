@@ -18,6 +18,9 @@ import './rxjs-operators';
 
 export class PeliculasUiComponent implements OnInit {
 
+//Esta linea la quite del http
+//[class.pruebaFilaClicked]="booleanFilaClicked"
+
 //variables para http 
   errorMessage: string;
   pelisListHttp: PeliculaPojo[];

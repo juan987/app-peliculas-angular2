@@ -1,6 +1,6 @@
-<h1>Peliculas app, UI ver 1.0.0</h1>
-<h2>Tabla de peliculas</h2>
-<table border="2">
+<h1 class="elementoOculto">Peliculas app, UI ver 1.0.0</h1>
+<h2 class="elementoOculto">Tabla de peliculas</h2>
+<table border="2" class="elementoOculto">
   <thead>
     <tr>
       <th>Id</th>
@@ -21,7 +21,7 @@
   </tbody>
 </table>
 
-<h1>Componentes del proyecto pelicula Jquery con bootstrap</h1>
+<h1 class="elementoOculto">Componentes del proyecto pelicula Jquery con bootstrap</h1>
 <div class="container">
     <!-- Cosas que no uso o he cambiado 
     	<p>Nombre: <input type="text" name="nombre" required pattern="([a-zA-ZñÑ]{3,}uben|Victor)" /></p>
@@ -128,7 +128,7 @@
                 <tbody>
                     <!-- tr *ngFor="let peli of getDatos2()"  -->
                     <tr *ngFor="let peli of pelisListHttp"
-                            [class.pruebaFilaClicked]="booleanFilaClicked"
+                            
                             (click)="clickEnFila(peli)">
                       <td>{{peli.id}}</td>
                       <td>{{peli.titulo}}</td>
