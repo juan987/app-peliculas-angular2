@@ -11,7 +11,7 @@ export class ServicioHttpService {
 
   constructor(private http: Http) { }
 
-  getListaPeliculas(): Observable<PeliculaPojo2[]>{
+  getListaPeliculas(): Observable<PeliculaPojo[]>{
     return this.http.get(this.urlGet)
                     .map(this.extractData)
                     .catch(this.handleError);
@@ -24,6 +24,7 @@ export class ServicioHttpService {
     console.log("En http service, el body es   " +body);
     console.log("En http service, el titulo 0 es   " +body[0].titulo);
 
+//Si retorno body data, da error.
     //return body.data || { };
     return body;
     //return JSON.stringify(body);

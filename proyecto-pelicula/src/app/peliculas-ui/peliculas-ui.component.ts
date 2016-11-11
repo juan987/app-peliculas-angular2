@@ -51,6 +51,7 @@ export class PeliculasUiComponent implements OnInit {
     console.log("variable mi fila:    " +miFila.id)
     console.log("variable mi fila:    " +miFila.titulo)
     console.log("variable mi fila:    " +miFila.director)
+    this.peliculaPojo = miFila;
 
   }
 
@@ -88,7 +89,7 @@ export class PeliculasUiComponent implements OnInit {
   getPelisHttp() {
     this.servicioHttpService.getListaPeliculas()
                      .subscribe(
-                       pelisListHttp => this.pelisListHttp2 = pelisListHttp,
+                       pelisListHttp => this.pelisListHttp = pelisListHttp,
                        error =>  this.errorMessage = <any>error);
   }
 

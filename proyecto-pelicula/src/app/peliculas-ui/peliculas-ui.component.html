@@ -40,42 +40,42 @@
             <div class="form-group">
                 <label for="id_peli" class="col-sm-2 control-label">Id de la película</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="id_peli" name="id" disabled  />
+                    <input type="text" class="form-control" id="id_peli" name="id" disabled  [(ngModel)]="peliculaPojo.id"/>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="titulo" class="col-sm-2 control-label">Título</label> 
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="titulo" name="titulo" required autofocus/>
+                    <input type="text" class="form-control" id="titulo" name="titulo" required autofocus [(ngModel)]="peliculaPojo.titulo"/>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="director" class="col-sm-2 control-label">Director</label> 
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="director" name="director" required  />
+                    <input type="text" class="form-control" id="director" name="director" required [(ngModel)]="peliculaPojo.director" />
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="sinopsis" class="col-sm-2 control-label">Sinopsis</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="sinopsis" name="sinopsis" required  />
+                    <input type="text" class="form-control" id="sinopsis" name="sinopsis" required  [(ngModel)]="peliculaPojo.sinopsis"/>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="fecha" class="col-sm-2 control-label">Fecha</label> 
                 <div class="col-sm-10">
-                    <input type="date" class="form-control" id="fecha" name="fecha" required/>
+                    <input type="date" class="form-control" id="fecha" name="fecha" required [(ngModel)]="peliculaPojo.fecha"/>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="valoracion" class="col-sm-2 control-label">Valoración</label> 
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="valoracion" list="cafes" name="valoracion" required>
+                    <input type="text" class="form-control" id="valoracion" list="cafes" name="valoracion" required [(ngModel)]="peliculaPojo.valoracion">
                 </div>
                 <datalist id="cafes">
                     <option label="Mala" 
@@ -127,7 +127,7 @@
                 </thead>
                 <tbody>
                     <!-- tr *ngFor="let peli of getDatos2()"  -->
-                    <tr *ngFor="let peli of pelisListHttp2"
+                    <tr *ngFor="let peli of pelisListHttp"
                             [class.pruebaFilaClicked]="booleanFilaClicked"
                             (click)="clickEnFila(peli)">
                       <td>{{peli.id}}</td>
