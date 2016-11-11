@@ -51,7 +51,13 @@ export class PeliculasUiComponent implements OnInit {
     console.log("variable mi fila:    " +miFila.id)
     console.log("variable mi fila:    " +miFila.titulo)
     console.log("variable mi fila:    " +miFila.director)
-    this.peliculaPojo = miFila;
+    //this.peliculaPojo = miFila;
+    this.peliculaPojo.setId(miFila.id);
+    this.peliculaPojo.setTitulo(miFila.titulo);
+    this.peliculaPojo.setDirector(miFila.director);
+    this.peliculaPojo.setSinopsis(miFila.sinopsis);
+    this.peliculaPojo.setFecha(miFila.fecha);
+    this.peliculaPojo.setValoracion(miFila.valoracion);
 
   }
 

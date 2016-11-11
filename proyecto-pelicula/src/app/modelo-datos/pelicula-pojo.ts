@@ -1,12 +1,34 @@
 export class PeliculaPojo {
-    constructor(private id: string,
-                private titulo: string,
-                private director: string,
-                private sinopsis: string,
-                private fecha: string,
-                private valoracion: string
+    constructor( private id: string,
+                 private titulo: string,
+                 private director: string,
+                 private sinopsis: string,
+                 private fecha: string,
+                 private valoracion: string
                 //La ? es que es opcional
                 ){}
+
+                setId(id: string): void{
+                    this.id = id;
+                }
+                setTitulo(titulo: string): void{
+                    this.titulo = titulo;
+                }
+
+                setDirector(director: string): void{
+                    this.director = director;
+                }
+
+                setSinopsis(sinopsis: string): void{
+                    this.sinopsis = sinopsis;
+                }
+
+                setFecha(fecha: string): void{
+                    this.fecha = fecha;
+                }
+                setValoracion(valoracion: string): void{
+                    this.valoracion = valoracion;
+                }
 
     toString(): string{
         return "pelicula: \n\t ID:  "
