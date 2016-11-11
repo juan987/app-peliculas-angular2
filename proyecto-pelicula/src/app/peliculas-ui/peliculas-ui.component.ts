@@ -24,9 +24,13 @@ export class PeliculasUiComponent implements OnInit {
   ngOnInit() {
   }
 
-  clickEnFila(): void{
+  clickEnFila(miFila: any): void{
     console.log("Has hecho click en una fila");
     this.booleanFilaClicked = true;
+    console.log("variable mi fila:    " +miFila[0].value)
+    console.log("variable mi fila:    " +miFila[0].text)
+    console.log("variable mi fila:    " +miFila[0].html)
+
   }
 
 
