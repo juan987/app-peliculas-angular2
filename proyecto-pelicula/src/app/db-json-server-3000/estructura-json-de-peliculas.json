@@ -1,36 +1,12 @@
 {
   "peliculas": [
     {
-      "id": 30,
-      "titulo": "peli 5 mod en clase el 14 nov",
-      "director": "director 5",
-      "sinopsis": "hyfhoifho ohyfoihyfohofhofollcjv lkehwhehh",
-      "fecha": "2016-11-14",
-      "valoracion": "Excelente"
-    },
-    {
-      "titulo": "peli 6",
-      "director": "director 6",
-      "sinopsis": "hyfhoifho ohyfoihyfohofhofollcjv lkehwhehh",
-      "fecha": "2016-11-09",
-      "valoracion": "Excelente",
-      "id": 31
-    },
-    {
-      "titulo": "peli 7",
-      "director": "director 7",
-      "sinopsis": "klefjlkefjle efljkfelijefliujfjlief hliefhjolefiolfhjef lifhefoihoiefhoiefhoef lkefholfhoiefheof hoilhyfeoihfeoihefoiefo lkhiefhefoifeoiefhoi ",
-      "fecha": "2016-11-27",
-      "valoracion": "Regular",
-      "id": 32
-    },
-    {
-      "titulo": "peli 8 modificado",
+      "id": 33,
+      "titulo": "peli 8 modificado mod",
       "director": "director 8",
       "sinopsis": "hhcu",
       "fecha": "2016-11-26",
-      "valoracion": "Mala",
-      "id": 33
+      "valoracion": "Mala"
     },
     {
       "titulo": "dfnlsjp",
@@ -73,22 +49,6 @@
       "id": 38
     },
     {
-      "titulo": null,
-      "director": null,
-      "sinopsis": null,
-      "fecha": null,
-      "valoracion": null,
-      "id": 39
-    },
-    {
-      "titulo": null,
-      "director": null,
-      "sinopsis": null,
-      "fecha": null,
-      "valoracion": null,
-      "id": 40
-    },
-    {
       "id": 41,
       "titulo": "xxx mod",
       "director": "qqqq",
@@ -106,19 +66,11 @@
     },
     {
       "id": 43,
-      "titulo": null,
-      "director": null,
-      "sinopsis": null,
-      "fecha": null,
-      "valoracion": null
-    },
-    {
-      "id": 44,
-      "titulo": null,
-      "director": null,
-      "sinopsis": null,
-      "fecha": null,
-      "valoracion": null
+      "titulo": "holaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "director": "aaaa",
+      "sinopsis": "aaa",
+      "fecha": "2016-11-27",
+      "valoracion": "Excelente"
     }
   ]
 }

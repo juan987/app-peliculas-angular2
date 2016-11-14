@@ -94,6 +94,7 @@
                 <input type="reset" class="btn btn-primary"> 
                 <input type="button" class="btn btn-primary" id="guardar" value="Guardar" (click)="clickGuardar()"/>
                 <input type="button" class="btn btn-primary" id="modificar" value="Modificar" (click)="clickModificar()"  />
+                <input type="button" class="btn btn-primary" id="borrar" value="Borrar" (click)="clickBorrar()"  />
                 <input class="elementoOculto" type="button" id="borrar" value="Borrar"/>
             </div>
         </div>
@@ -120,9 +121,6 @@
                         <th>Sinopsis</th>
                         <th>Fecha</th>
                         <th>Valoración</th>
-                        <th>Borrar</th>
-                        <th>Seleccionar</th>
-
                     </tr>
                 </thead>
                 <tbody>
@@ -136,8 +134,6 @@
                       <td>{{peli.sinopsis}}</td>
                       <td>{{peli.fecha}}</td>
                       <td>{{peli.valoracion}}</td>
-                      <td class='borrar'><button>Borrar</button></td>
-                      <td class='modificar'><button>Seleccionar</button></td>
                     </tr>
                 </tbody>
             </table>

@@ -35,7 +35,7 @@ export class PeliculasUiComponent implements OnInit {
 
   constructor(private servicioPeliculasDaoService: ServicioPeliculasDaoService,
               private servicioHttpService: ServicioHttpService) { 
-    this.peliculaPojo = new PeliculaPojo("","","","","","")
+    this.peliculaPojo = new PeliculaPojo("","","","","","");
     //this.listaDePeliculas = servicioPeliculasDaoService.getListaPeliculas();
     //this.servicioPeliculasDaoService = servicioPeliculasDaoService;
   }
@@ -72,6 +72,11 @@ export class PeliculasUiComponent implements OnInit {
   clickModificar(): void{
     console.log('Click en el boton modificar');
     this.modificarPeliHttp();
+  }
+
+  clickBorrar(): void{
+    console.log('Click en el boton borrar');
+    this.deletePeliHttp();
   }
 
 
@@ -117,7 +122,8 @@ export class PeliculasUiComponent implements OnInit {
     if (!this.peliculaPojo) { return; }
     this.servicioHttpService.addNuevaPeli(this.peliculaPojo)
                      .subscribe(
-                       peliculaPojo  => this.pelisListHttp.push(peliculaPojo),
+                       peliculaPojo  => {this.pelisListHttp.push(peliculaPojo);
+                         this.reiniciarPeliculaPojo();},
                        error =>  this.errorMessage = <any>error);
   }
 
@@ -126,26 +132,43 @@ export class PeliculasUiComponent implements OnInit {
     if (!this.peliculaPojo) { return; }
     this.servicioHttpService.putPeli(this.peliculaPojo)
                      .subscribe(
-                       this.miFuncionResultadoPut,
+                       peliculaPojo => this.miFuncionResultadoPut(),
+                       //this.getPelisHttp,
+                       //this.miFuncionResultadoPut,
                        //peliculaPojo  => this.pelisListHttp.push(peliculaPojo),
                        error =>  this.errorMessage = <any>error);
   }
 
-  deletePeli(){
+  deletePeliHttp(){
     if (!this.peliculaPojo) { return; }
     this.servicioHttpService.deletePeli(this.peliculaPojo)
                      .subscribe(
-                       peliculaPojo  => this.pelisListHttp.push(peliculaPojo),
+                       //la funcion delete de typicode no devuelve nada, peliculaPojo es undefined.
+                       peliculaPojo  => {console.log('Pelicula borrada con id:   ' +this.peliculaPojo.getId());
+                       this.getPelisHttp();
+                       this.reiniciarPeliculaPojo();},
                        error =>  this.errorMessage = <any>error);
   } 
 //Fin de metodos relacionados con http
 
-miFuncionResultadoPut(){
-  console.log('Resultado de put, modificar pelicula');
-  //Vuelvo a hacer el get inicial para recargar toda la tabla, esto es provisional
-  //this.getPelisHttp();
+  miFuncionResultadoPut(){
+    console.log('Resultado de put, modificar pelicula');
+    //Vuelvo a hacer el get inicial para recargar toda la tabla, esto es provisional
+    this.getPelisHttp();
+    this.reiniciarPeliculaPojo();
+    this.muestraConsola();
 
-}
+  }
+
+  muestraConsola(){
+    //solo para probar
+    console.log('muestra consola prueba...........')
+  }
+
+  reiniciarPeliculaPojo(): void{
+    this.peliculaPojo = undefined;
+    this.peliculaPojo = new PeliculaPojo("","","","","","");
+  }
 
 
 }

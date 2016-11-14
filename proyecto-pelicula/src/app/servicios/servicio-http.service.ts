@@ -100,6 +100,7 @@ export class ServicioHttpService {
   //Funcion Borrar
     private urlDelete = 'http://localhost:3000/peliculas/';//Url para modificar
 
+    //deletePeli (peliculaPojo: PeliculaPojo): Observable<PeliculaPojo> {
     deletePeli (peliculaPojo: PeliculaPojo): Observable<PeliculaPojo> {
     let nuevaPeliJson = {
     "id":peliculaPojo.getId(), 
@@ -116,7 +117,9 @@ export class ServicioHttpService {
     //return this.http.post(this.urlPost, peliculaPojo, options)
 
 
-    return this.http.delete(this.urlDelete + peliculaPojo.getId());
+    return this.http.delete(this.urlDelete + peliculaPojo.getId())
+                      .map(this.extractData)
+                      .catch(this.handleError);
   }//Fin del modificarPeli
 
 }//Fin de la clase
