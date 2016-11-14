@@ -18,6 +18,16 @@ import './rxjs-operators';
 
 export class PeliculasUiComponent implements OnInit {
 
+//Variables para mostrar cuando una columna no esta ordenada, 
+//esta ordenada en orden ascendente o esta ordenada en orden descendente
+colTitulo: string = "Título";
+colDirector: string = "Director";
+
+//FIN DE Variables para mostrar cuando una columna no esta ordenada, 
+//esta ordenada en orden ascendente o esta ordenada en orden descendente
+
+
+
 //Esta linea la quite del http
 //[class.pruebaFilaClicked]="booleanFilaClicked"
 
@@ -76,6 +86,7 @@ export class PeliculasUiComponent implements OnInit {
   }
 
   clickModificar(): void{
+    this.boolTitulo = !this.boolTitulo;
     console.log('Click en el boton modificar');
     this.modificarPeliHttp();
   }
@@ -85,24 +96,50 @@ export class PeliculasUiComponent implements OnInit {
     this.deletePeliHttp();
   }
 
-  clickOrdenarTituloAscendente(): void{
+  clickOrdenarPorTitulo(): void{
     console.log('Click en columna titulo para ordenar');
-    //this.pelisListHttp.sort(this.ordenarPorTituloAscendente);
-    //this.pelisListHttp.sort();
+    this.colDirector = "Director";
+    if(this.boolTitulo){
+      this.colTitulo= "Título asc";
+      this.boolTitulo = !this.boolTitulo;
+      //He tenido que cambiar todas las properties de PeliculaPojo a public,
+      //por que sort no reconocia los getters
+      this.pelisListHttp.sort((a: PeliculaPojo, b: PeliculaPojo): number =>{
+        console.log('a ver que es a:     ' +a.titulo);
+        if (a.titulo < b.titulo)
+          return -1;
+        if (a.titulo > b.titulo)
+          return 1;
+        return 0;
+      });
+    }else{
+        this.colTitulo= "Título des";
+        this.boolTitulo = !this.boolTitulo;
+        this.pelisListHttp.reverse();
+    }    
+  }//Fin de clickOrdenarPorTitulo
 
-    //He tenido que cambiar todas las properties de PeliculaPojo a public,
-    //por que sort no reconocia los getters
-    this.pelisListHttp.sort((a: PeliculaPojo, b: PeliculaPojo): number =>{
-      console.log('a ver que es a:     ' +a.titulo);
-      if (a.titulo < b.titulo)
-        return -1;
-      //if (a.getId() > b.getId())
-      if (a.titulo > b.titulo)
-        return 1;
-      return 0;
-    });
-    
-  }
+  clickOrdenarPorDirector(): void{
+    console.log('Click en columna director para ordenar');
+    this.colTitulo = "Título";
+    if(this.boolDirector){
+      this.colDirector= "Director asc";
+      this.boolDirector = !this.boolDirector;
+      //He tenido que cambiar todas las properties de PeliculaPojo a public,
+      //por que sort no reconocia los getters
+      this.pelisListHttp.sort((a: PeliculaPojo, b: PeliculaPojo): number =>{
+        if (a.director < b.director)
+          return -1;
+        if (a.director > b.director)
+          return 1;
+        return 0;
+      });
+    }else{
+        this.colDirector= "Director des";
+        this.boolDirector = !this.boolDirector;
+        this.pelisListHttp.reverse();
+    }    
+  }//Fin de clickOrdenarPorDirector
 
 
 //para coger los datos de las peliculas
@@ -134,40 +171,14 @@ export class PeliculasUiComponent implements OnInit {
   ];
   //FIN Datos de la tabla pequeña
 
-
-//Metodos relacionados con sort
-/*
-  ordenarPorTituloAscendente(a: PeliculaPojo, b:PeliculaPojo): number {
-    //if (a.getId() < b.getId())
-    if (a.getTitulo() < b.getTitulo())
-      return -1;
-    //if (a.getId() > b.getId())
-    if (a.getTitulo() > b.getTitulo())
-      return 1;
-    return 0;
-  }
-  */
-
-    ordenarPorTituloAscendente(a, b): number {
-      //if (a.getId() < b.getId())
-      if (a.getTitulo() < b.getTitulo())
-        return -1;
-      //if (a.getId() > b.getId())
-      if (a.getTitulo() > b.getTitulo())
-        return 1;
-      return 0;
-    }
-
-//FIN de metodos relacionados con sort
-
-
-
-
 //Metodos relacionados con http
   getPelisHttp() {
     this.servicioHttpService.getListaPeliculas()
                      .subscribe(
-                       pelisListHttp => this.pelisListHttp = pelisListHttp,
+                       pelisListHttp => {this.pelisListHttp = pelisListHttp;
+                          this.colTitulo= "Título";
+                          this.colDirector= "Director";},
+                       //Con slice(0) obtengo una copia del array
                        //pelisListHttp => this.pelisListHttp = pelisListHttp.slice(0),
                        error =>  this.errorMessage = <any>error);
   }
@@ -178,7 +189,9 @@ export class PeliculasUiComponent implements OnInit {
     this.servicioHttpService.addNuevaPeli(this.peliculaPojo)
                      .subscribe(
                        peliculaPojo  => {this.pelisListHttp.push(peliculaPojo);
-                         this.reiniciarPeliculaPojo();},
+                         this.reiniciarPeliculaPojo();
+                         this.colTitulo= "Título";
+                         this.colDirector= "Director";},
                        error =>  this.errorMessage = <any>error);
   }
 
@@ -206,13 +219,16 @@ export class PeliculasUiComponent implements OnInit {
   } 
 //Fin de metodos relacionados con http
 
+//Este lo puse asi, para ver que tambien puedo llamar a una funcion con desde 
+//una funcion lambda
   miFuncionResultadoPut(){
     console.log('Resultado de put, modificar pelicula');
     //Vuelvo a hacer el get inicial para recargar toda la tabla, esto es provisional
     this.getPelisHttp();
     this.reiniciarPeliculaPojo();
     this.muestraConsola();
-
+    this.colTitulo= "Título";
+    this.colDirector= "Director des";
   }
 
   muestraConsola(){

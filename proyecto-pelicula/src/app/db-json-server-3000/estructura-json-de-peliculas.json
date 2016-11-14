@@ -1,75 +1,19 @@
 {
   "peliculas": [
     {
-      "id": 33,
-      "titulo": "peli 8 modificado mod",
-      "director": "director 8",
-      "sinopsis": "hhcu",
-      "fecha": "2016-11-26",
-      "valoracion": "Mala"
-    },
-    {
-      "titulo": "dfnlsjp",
-      "director": "ñlfjopwfjwdp",
-      "sinopsis": "ñcoñasn",
-      "fecha": "2016-11-12",
-      "valoracion": "Excelente",
-      "id": 34
-    },
-    {
-      "id": 35,
-      "titulo": "a ver",
-      "director": "a ver",
-      "sinopsis": "a ver",
-      "fecha": "2016-11-11",
-      "valoracion": "Excelente"
-    },
-    {
-      "id": 36,
-      "titulo": "xxx",
-      "director": "xxx",
-      "sinopsis": "xxx",
-      "fecha": "2016-11-12",
-      "valoracion": "Mala"
-    },
-    {
-      "titulo": "eee",
-      "director": "eee",
-      "sinopsis": "eeee",
-      "fecha": "2016-11-13",
-      "valoracion": "Excelente",
-      "id": 37
-    },
-    {
-      "titulo": "aaa",
-      "director": "aaaa",
-      "sinopsis": "aaaa",
+      "id": 1,
+      "titulo": "a",
+      "director": "z",
+      "sinopsis": "sssss",
       "fecha": "2016-11-14",
-      "valoracion": "Muy Buena",
-      "id": 38
-    },
-    {
-      "id": 41,
-      "titulo": "xxx mod",
-      "director": "qqqq",
-      "sinopsis": "qqqq",
-      "fecha": "2016-11-07",
       "valoracion": "Buena"
     },
     {
-      "id": 42,
-      "titulo": "ppppppppppppppppppppppppppppp",
-      "director": null,
-      "sinopsis": null,
-      "fecha": null,
-      "valoracion": null
-    },
-    {
-      "id": 43,
-      "titulo": "holaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "director": "aaaa",
-      "sinopsis": "aaa",
-      "fecha": "2016-11-27",
+      "id": 2,
+      "titulo": "z",
+      "director": "aaa",
+      "sinopsis": "deded",
+      "fecha": "2016-11-23",
       "valoracion": "Excelente"
     }
   ]
