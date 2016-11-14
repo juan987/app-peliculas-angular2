@@ -33,6 +33,12 @@ export class PeliculasUiComponent implements OnInit {
   //private servicioPeliculasDaoService: ServicioPeliculasDaoService;
   public booleanFilaClicked: boolean = false;
 
+  //booleans para ordenar ascendente o descentente
+  boolTitulo: boolean = true;
+  boolDirector: boolean = true;
+  boolFecha: boolean = true;
+  boolValoracion: boolean = true;
+
   constructor(private servicioPeliculasDaoService: ServicioPeliculasDaoService,
               private servicioHttpService: ServicioHttpService) { 
     this.peliculaPojo = new PeliculaPojo("","","","","","");
@@ -79,6 +85,25 @@ export class PeliculasUiComponent implements OnInit {
     this.deletePeliHttp();
   }
 
+  clickOrdenarTituloAscendente(): void{
+    console.log('Click en columna titulo para ordenar');
+    //this.pelisListHttp.sort(this.ordenarPorTituloAscendente);
+    //this.pelisListHttp.sort();
+
+    //He tenido que cambiar todas las properties de PeliculaPojo a public,
+    //por que sort no reconocia los getters
+    this.pelisListHttp.sort((a: PeliculaPojo, b: PeliculaPojo): number =>{
+      console.log('a ver que es a:     ' +a.titulo);
+      if (a.titulo < b.titulo)
+        return -1;
+      //if (a.getId() > b.getId())
+      if (a.titulo > b.titulo)
+        return 1;
+      return 0;
+    });
+    
+  }
+
 
 //para coger los datos de las peliculas
   getDatos2(): PeliculaPojo[]{
@@ -109,11 +134,41 @@ export class PeliculasUiComponent implements OnInit {
   ];
   //FIN Datos de la tabla pequeña
 
+
+//Metodos relacionados con sort
+/*
+  ordenarPorTituloAscendente(a: PeliculaPojo, b:PeliculaPojo): number {
+    //if (a.getId() < b.getId())
+    if (a.getTitulo() < b.getTitulo())
+      return -1;
+    //if (a.getId() > b.getId())
+    if (a.getTitulo() > b.getTitulo())
+      return 1;
+    return 0;
+  }
+  */
+
+    ordenarPorTituloAscendente(a, b): number {
+      //if (a.getId() < b.getId())
+      if (a.getTitulo() < b.getTitulo())
+        return -1;
+      //if (a.getId() > b.getId())
+      if (a.getTitulo() > b.getTitulo())
+        return 1;
+      return 0;
+    }
+
+//FIN de metodos relacionados con sort
+
+
+
+
 //Metodos relacionados con http
   getPelisHttp() {
     this.servicioHttpService.getListaPeliculas()
                      .subscribe(
                        pelisListHttp => this.pelisListHttp = pelisListHttp,
+                       //pelisListHttp => this.pelisListHttp = pelisListHttp.slice(0),
                        error =>  this.errorMessage = <any>error);
   }
 

@@ -1,10 +1,12 @@
 export class PeliculaPojo {
-    constructor( private id: string,
-                 private titulo: string,
-                 private director: string,
-                 private sinopsis: string,
-                 private fecha: string,
-                 private valoracion: string
+    //He tenido que cambiar todas las properties de PeliculaPojo a public,
+    //por que sort no reconocia los getters en la clasew peliculas-ui.component.ts
+    constructor( public id: string,
+                 public titulo: string,
+                 public director: string,
+                 public sinopsis: string,
+                 public fecha: string,
+                 public valoracion: string
                 //La ? es que es opcional
                 ){}
 
