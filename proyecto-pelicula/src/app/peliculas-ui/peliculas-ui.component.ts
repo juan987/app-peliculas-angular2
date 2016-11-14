@@ -69,6 +69,11 @@ export class PeliculasUiComponent implements OnInit {
     this.addPeliHttp();
   }
 
+  clickModificar(): void{
+    console.log('Click en el boton modificar');
+    this.modificarPeliHttp();
+  }
+
 
 //para coger los datos de las peliculas
   getDatos2(): PeliculaPojo[]{
@@ -115,9 +120,33 @@ export class PeliculasUiComponent implements OnInit {
                        peliculaPojo  => this.pelisListHttp.push(peliculaPojo),
                        error =>  this.errorMessage = <any>error);
   }
-  
-  
+
+
+  modificarPeliHttp () {
+    if (!this.peliculaPojo) { return; }
+    this.servicioHttpService.putPeli(this.peliculaPojo)
+                     .subscribe(
+                       this.miFuncionResultadoPut,
+                       //peliculaPojo  => this.pelisListHttp.push(peliculaPojo),
+                       error =>  this.errorMessage = <any>error);
+  }
+
+  deletePeli(){
+    if (!this.peliculaPojo) { return; }
+    this.servicioHttpService.deletePeli(this.peliculaPojo)
+                     .subscribe(
+                       peliculaPojo  => this.pelisListHttp.push(peliculaPojo),
+                       error =>  this.errorMessage = <any>error);
+  } 
 //Fin de metodos relacionados con http
+
+miFuncionResultadoPut(){
+  console.log('Resultado de put, modificar pelicula');
+  //Vuelvo a hacer el get inicial para recargar toda la tabla, esto es provisional
+  //this.getPelisHttp();
+
+}
+
 
 }
 

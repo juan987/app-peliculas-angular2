@@ -33,6 +33,10 @@ export class PeliculaPojo {
 
 
                 //Getters
+                getId(): string{
+                    return this.id;
+                }
+
                 getTitulo(): string{
                     return this.titulo;
                 }

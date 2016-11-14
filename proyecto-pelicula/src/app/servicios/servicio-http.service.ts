@@ -69,6 +69,54 @@ export class ServicioHttpService {
     return this.http.post(this.urlPost, peliculaPojo, options)
                     .map(this.extractData)
                     .catch(this.handleError);
-  }
+  }//Fin del addNuevaPeli
 
-}
+
+//Funcion Modificar
+    private urlPut = 'http://localhost:3000/peliculas/';//Url para modificar
+
+    putPeli (peliculaPojo: PeliculaPojo): Observable<PeliculaPojo> {
+    let nuevaPeliJson = {
+    "id":peliculaPojo.getId(), 
+    "titulo": peliculaPojo.getTitulo(),
+    "director": peliculaPojo.getDirector(),
+    "sinopsis": peliculaPojo.getSinopsis(),
+    "fecha": peliculaPojo.getFecha(),
+    "valoracion": peliculaPojo.getValoracion()
+    };
+
+    
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    //return this.http.post(this.urlPost, peliculaPojo, options)
+
+  
+    return this.http.put(this.urlPut + peliculaPojo.getId(), peliculaPojo, options)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }//Fin del modificarPeli
+
+
+  //Funcion Borrar
+    private urlDelete = 'http://localhost:3000/peliculas/';//Url para modificar
+
+    deletePeli (peliculaPojo: PeliculaPojo): Observable<PeliculaPojo> {
+    let nuevaPeliJson = {
+    "id":peliculaPojo.getId(), 
+    "titulo": peliculaPojo.getTitulo(),
+    "director": peliculaPojo.getDirector(),
+    "sinopsis": peliculaPojo.getSinopsis(),
+    "fecha": peliculaPojo.getFecha(),
+    "valoracion": peliculaPojo.getValoracion()
+    };
+
+    
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    //return this.http.post(this.urlPost, peliculaPojo, options)
+
+
+    return this.http.delete(this.urlDelete + peliculaPojo.getId());
+  }//Fin del modificarPeli
+
+}//Fin de la clase

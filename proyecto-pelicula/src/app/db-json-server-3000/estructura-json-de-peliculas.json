@@ -1,12 +1,12 @@
 {
   "peliculas": [
     {
-      "titulo": "peli 5 mod",
+      "id": 30,
+      "titulo": "peli 5 mod en clase el 14 nov",
       "director": "director 5",
       "sinopsis": "hyfhoifho ohyfoihyfohofhofollcjv lkehwhehh",
-      "fecha": "2016-11-08",
-      "valoracion": "Excelente",
-      "id": 30
+      "fecha": "2016-11-14",
+      "valoracion": "Excelente"
     },
     {
       "titulo": "peli 6",
@@ -98,7 +98,7 @@
     },
     {
       "id": 42,
-      "titulo": null,
+      "titulo": "ppppppppppppppppppppppppppppp",
       "director": null,
       "sinopsis": null,
       "fecha": null,
