@@ -19,6 +19,9 @@
     left: .1em;
   }
 
+  tbody tr.filaClickada {
+    background-color: #1B5E20;
+  }
 
   /*  
     Componentes css del proyecto peliculas con jquery y bootstrap

@@ -26,10 +26,14 @@ colDirector: string = "Director";
 //FIN DE Variables para mostrar cuando una columna no esta ordenada, 
 //esta ordenada en orden ascendente o esta ordenada en orden descendente
 
+//Esta variable se usa para desmarcar una fila ya marcada cuando se hace un nuevo
+//click en la tabla, de manera que SOLO una fila este resaltada a la vez
+  hayUnaFilaClickada: number = -1;
 
 
-//Esta linea la quite del http
-//[class.pruebaFilaClicked]="booleanFilaClicked"
+//Variables para mostrar/ocultar o habilitar botones
+  muestraBotonGuardar: boolean = true;
+
 
 //variables para http 
   errorMessage: string;
@@ -60,17 +64,16 @@ colDirector: string = "Director";
     this.getPelisHttp();
   }
 
-  clickEnFila(miFila: any): void{
-    console.log("Has hecho click en una fila");
+  clickEnFila(miFila: any, indiceFilaTabla: any): void{
+    console.log("Has hecho click en una fila, con indice=   " +indiceFilaTabla);
     this.booleanFilaClicked = true;
-    //console.log("variable mi fila:    " +miFila[0].value)
-    //console.log("variable mi fila:    " +miFila[0].text)
-    //console.log("variable mi fila:    " +miFila[0].html)
 
-    console.log("variable mi fila:    " +miFila.id)
-    console.log("variable mi fila:    " +miFila.titulo)
-    console.log("variable mi fila:    " +miFila.director)
+    //console.log("variable mi fila:    " +miFila.id)
+    //console.log("variable mi fila:    " +miFila.titulo)
+    //console.log("variable mi fila:    " +miFila.director)
+
     //this.peliculaPojo = miFila;
+
     this.peliculaPojo.setId(miFila.id);
     this.peliculaPojo.setTitulo(miFila.titulo);
     this.peliculaPojo.setDirector(miFila.director);
@@ -78,7 +81,17 @@ colDirector: string = "Director";
     this.peliculaPojo.setFecha(miFila.fecha);
     this.peliculaPojo.setValoracion(miFila.valoracion);
 
-  }
+
+    //si tecleo dos veces seguidas la misma fila,la segunda vez no entra en el if
+    //Y se ejecuta la segunda parte del html en el click
+    if(this.hayUnaFilaClickada != -1 && indiceFilaTabla != this.hayUnaFilaClickada){
+      this.pelisListHttp[this.hayUnaFilaClickada].booelanIsActive = false;
+    }
+
+    this.hayUnaFilaClickada = indiceFilaTabla;
+    
+
+  }//Fin de clickEnFila
 
   clickGuardar(): void{
     console.log("Click en el boton guardar");

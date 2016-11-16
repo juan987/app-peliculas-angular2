@@ -33,7 +33,7 @@
     <!-- FIN de En casa el 27oct16 -->
 
     <h1>Formulario de Peliculas</h1>
-	<form role="form" class="form-horizontal" id="miFormulario" action="#">
+	<form role="form" class="form-horizontal" #form="ngForm" id="miFormulario" action="#">
     <fieldset>
         <legend>Rellene los datos solicitados:</legend>
         <div id="rosa">
@@ -92,7 +92,8 @@
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <input type="reset" class="btn btn-primary"> 
-                <input type="button" class="btn btn-primary" id="guardar" value="Guardar" (click)="clickGuardar()"/>
+                <input type="button" class="btn btn-primary" id="guardar" value="Guardar" (click)="clickGuardar()" 
+                                        [disabled]="(form.invalid)"/>
                 <input type="button" class="btn btn-primary" id="modificar" value="Modificar" (click)="clickModificar()"  />
                 <input type="button" class="btn btn-primary" id="borrar" value="Borrar" (click)="clickBorrar()"  />
                 <input class="elementoOculto" type="button" id="borrar" value="Borrar"/>
@@ -125,9 +126,9 @@
                 </thead>
                 <tbody>
                     <!-- tr *ngFor="let peli of getDatos2()"  -->
-                    <tr *ngFor="let peli of pelisListHttp"
-                            
-                            (click)="clickEnFila(peli)">
+                    <tr *ngFor="let peli of pelisListHttp, let i = index;"
+                            [ngClass]="{filaClickada: peli.booelanIsActive}"
+                            (click)="clickEnFila(peli, i); peli.booelanIsActive = !peli.booelanIsActive">
                       <td>{{peli.id}}</td>
                       <td>{{peli.titulo}}</td>
                       <td>{{peli.director}}</td>

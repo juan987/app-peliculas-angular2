@@ -1,4 +1,9 @@
 export class PeliculaPojo {
+    //Variable booelean para asignar la clase .filaClickada a la fila 
+    //Clickada y resaltarla
+    booelanIsActive: boolean=false;
+
+
     //He tenido que cambiar todas las properties de PeliculaPojo a public,
     //por que sort no reconocia los getters en la clasew peliculas-ui.component.ts
     constructor( public id: string,
