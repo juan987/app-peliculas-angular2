@@ -91,11 +91,14 @@
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <input type="reset" class="btn btn-primary"> 
+                <input type="reset" class="btn btn-primary" 
+                                        (click)="muestraBotonesModAndDel = true"> 
                 <input type="button" class="btn btn-primary" id="guardar" value="Guardar" (click)="clickGuardar()" 
-                                        [disabled]="(form.invalid)"/>
-                <input type="button" class="btn btn-primary" id="modificar" value="Modificar" (click)="clickModificar()"  />
-                <input type="button" class="btn btn-primary" id="borrar" value="Borrar" (click)="clickBorrar()"  />
+                                        [disabled]="form.invalid || !muestraBotonesModAndDel"/>
+                <input type="button" class="btn btn-primary" id="modificar" value="Modificar" 
+                                        (click)="clickModificar()" [disabled]="muestraBotonesModAndDel" />
+                <input type="button" class="btn btn-primary" id="borrar" value="Borrar" 
+                                        (click)="clickBorrar()"  [disabled]="muestraBotonesModAndDel"/>
                 <input class="elementoOculto" type="button" id="borrar" value="Borrar"/>
             </div>
         </div>
@@ -128,7 +131,10 @@
                     <!-- tr *ngFor="let peli of getDatos2()"  -->
                     <tr *ngFor="let peli of pelisListHttp, let i = index;"
                             [ngClass]="{filaClickada: peli.booelanIsActive}"
-                            (click)="clickEnFila(peli, i); peli.booelanIsActive = !peli.booelanIsActive">
+                            (click)="
+                                    peli.booelanIsActive = !peli.booelanIsActive;
+                                    muestraBotonesModAndDel = false;
+                                    clickEnFila(peli, i); ">
                       <td>{{peli.id}}</td>
                       <td>{{peli.titulo}}</td>
                       <td>{{peli.director}}</td>

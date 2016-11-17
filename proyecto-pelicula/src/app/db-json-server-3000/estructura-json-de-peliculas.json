@@ -1,19 +1,10 @@
 {
   "peliculas": [
     {
-      "id": 1,
-      "titulo": "a",
-      "director": "z",
-      "sinopsis": "sssss",
-      "fecha": "2016-11-14",
-      "valoracion": "Buena",
-      "booelanIsActive": false
-    },
-    {
       "id": 3,
-      "titulo": "ssss mod",
+      "titulo": "ssss mod mod",
       "director": "sssss mod",
-      "sinopsis": "sssss",
+      "sinopsis": "sssss mod",
       "fecha": "2016-11-10",
       "valoracion": "sssss nnnnnnn",
       "booelanIsActive": false
@@ -25,6 +16,15 @@
       "sinopsis": "wfwfwwf",
       "fecha": "2016-11-13",
       "valoracion": "Muy Buena",
+      "booelanIsActive": false
+    },
+    {
+      "id": 5,
+      "titulo": "www",
+      "director": "www",
+      "sinopsis": "www",
+      "fecha": "2016-11-17",
+      "valoracion": "Excelente",
       "booelanIsActive": false
     }
   ]

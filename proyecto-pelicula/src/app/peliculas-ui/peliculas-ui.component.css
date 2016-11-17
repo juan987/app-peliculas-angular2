@@ -20,7 +20,8 @@
   }
 
   tbody tr.filaClickada {
-    background-color: #1B5E20;
+    background-color: #01579B;
+    color: #fff;
   }
 
   /*  

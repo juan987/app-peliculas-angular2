@@ -23,8 +23,6 @@ export class PeliculasUiComponent implements OnInit {
 colTitulo: string = "Título";
 colDirector: string = "Director";
 
-//FIN DE Variables para mostrar cuando una columna no esta ordenada, 
-//esta ordenada en orden ascendente o esta ordenada en orden descendente
 
 //Esta variable se usa para desmarcar una fila ya marcada cuando se hace un nuevo
 //click en la tabla, de manera que SOLO una fila este resaltada a la vez
@@ -32,7 +30,7 @@ colDirector: string = "Director";
 
 
 //Variables para mostrar/ocultar o habilitar botones
-  muestraBotonGuardar: boolean = true;
+  muestraBotonesModAndDel: boolean = true;
 
 
 //variables para http 
@@ -64,9 +62,15 @@ colDirector: string = "Director";
     this.getPelisHttp();
   }
 
+
+  //variable para controlar el tercer click seguido en la misma fila
+  tercerClickEnLaMismaFila: number = 0;
+
   clickEnFila(miFila: any, indiceFilaTabla: any): void{
     console.log("Has hecho click en una fila, con indice=   " +indiceFilaTabla);
     this.booleanFilaClicked = true;
+
+    
 
     //console.log("variable mi fila:    " +miFila.id)
     //console.log("variable mi fila:    " +miFila.titulo)
@@ -85,10 +89,36 @@ colDirector: string = "Director";
     //si tecleo dos veces seguidas la misma fila,la segunda vez no entra en el if
     //Y se ejecuta la segunda parte del html en el click
     if(this.hayUnaFilaClickada != -1 && indiceFilaTabla != this.hayUnaFilaClickada){
+    //if(indiceFilaTabla != this.hayUnaFilaClickada){
+      console.log('a ver si funciona lo de los botones')
       this.pelisListHttp[this.hayUnaFilaClickada].booelanIsActive = false;
+      this.tercerClickEnLaMismaFila = 0;
     }
 
+    /*
+    if(this.hayUnaFilaClickada == indiceFilaTabla){
+      this.tercerClickEnLaMismaFila++;
+      //Clear el formulario
+      if(this.tercerClickEnLaMismaFila <= 1){
+        this.reiniciarPeliculaPojo();
+      }else{
+        this.tercerClickEnLaMismaFila = 0;
+      }
+    }
+    */
+
+      
+      if(this.hayUnaFilaClickada == indiceFilaTabla){
+        if(this.muestraBotonesModAndDel == false){
+          this.reiniciarPeliculaPojo();
+          //this.muestraBotonesModAndDel = !this.muestraBotonesModAndDel;
+          this.muestraBotonesModAndDel = true;
+        }
+      }
+      
+
     this.hayUnaFilaClickada = indiceFilaTabla;
+    
     
 
   }//Fin de clickEnFila
@@ -204,7 +234,8 @@ colDirector: string = "Director";
                        peliculaPojo  => {this.pelisListHttp.push(peliculaPojo);
                          this.reiniciarPeliculaPojo();
                          this.colTitulo= "Título";
-                         this.colDirector= "Director";},
+                         this.colDirector= "Director";
+                         this.muestraBotonesModAndDel = true;},
                        error =>  this.errorMessage = <any>error);
   }
 
@@ -213,7 +244,8 @@ colDirector: string = "Director";
     if (!this.peliculaPojo) { return; }
     this.servicioHttpService.putPeli(this.peliculaPojo)
                      .subscribe(
-                       peliculaPojo => this.miFuncionResultadoPut(),
+                       peliculaPojo => {this.miFuncionResultadoPut();
+                         this.muestraBotonesModAndDel = true;},
                        //this.getPelisHttp,
                        //this.miFuncionResultadoPut,
                        //peliculaPojo  => this.pelisListHttp.push(peliculaPojo),
@@ -227,7 +259,8 @@ colDirector: string = "Director";
                        //la funcion delete de typicode no devuelve nada, peliculaPojo es undefined.
                        peliculaPojo  => {console.log('Pelicula borrada con id:   ' +this.peliculaPojo.getId());
                        this.getPelisHttp();
-                       this.reiniciarPeliculaPojo();},
+                       this.reiniciarPeliculaPojo();
+                       this.muestraBotonesModAndDel = true;},
                        error =>  this.errorMessage = <any>error);
   } 
 //Fin de metodos relacionados con http
