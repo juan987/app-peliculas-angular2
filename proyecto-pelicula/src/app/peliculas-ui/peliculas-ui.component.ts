@@ -235,7 +235,8 @@ colDirector: string = "Director";
                          this.reiniciarPeliculaPojo();
                          this.colTitulo= "Título";
                          this.colDirector= "Director";
-                         this.muestraBotonesModAndDel = true;},
+                         this.muestraBotonesModAndDel = true;
+                         this.hayUnaFilaClickada = -1;},
                        error =>  this.errorMessage = <any>error);
   }
 
@@ -245,7 +246,8 @@ colDirector: string = "Director";
     this.servicioHttpService.putPeli(this.peliculaPojo)
                      .subscribe(
                        peliculaPojo => {this.miFuncionResultadoPut();
-                         this.muestraBotonesModAndDel = true;},
+                         this.muestraBotonesModAndDel = true;
+                        this.hayUnaFilaClickada = -1;},
                        //this.getPelisHttp,
                        //this.miFuncionResultadoPut,
                        //peliculaPojo  => this.pelisListHttp.push(peliculaPojo),
@@ -260,7 +262,8 @@ colDirector: string = "Director";
                        peliculaPojo  => {console.log('Pelicula borrada con id:   ' +this.peliculaPojo.getId());
                        this.getPelisHttp();
                        this.reiniciarPeliculaPojo();
-                       this.muestraBotonesModAndDel = true;},
+                       this.muestraBotonesModAndDel = true;
+                      this.hayUnaFilaClickada = -1;},
                        error =>  this.errorMessage = <any>error);
   } 
 //Fin de metodos relacionados con http

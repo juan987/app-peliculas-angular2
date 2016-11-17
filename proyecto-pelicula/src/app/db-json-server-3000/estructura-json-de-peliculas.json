@@ -1,17 +1,8 @@
 {
   "peliculas": [
     {
-      "id": 3,
-      "titulo": "ssss mod mod",
-      "director": "sssss mod",
-      "sinopsis": "sssss mod",
-      "fecha": "2016-11-10",
-      "valoracion": "sssss nnnnnnn",
-      "booelanIsActive": false
-    },
-    {
       "id": 4,
-      "titulo": "ewfew",
+      "titulo": "ewfew mod",
       "director": "ffwerfw",
       "sinopsis": "wfwfwwf",
       "fecha": "2016-11-13",
@@ -20,10 +11,10 @@
     },
     {
       "id": 5,
-      "titulo": "www",
-      "director": "www",
-      "sinopsis": "www",
-      "fecha": "2016-11-17",
+      "titulo": "hoy",
+      "director": "ee",
+      "sinopsis": "ee",
+      "fecha": "2016-11-21",
       "valoracion": "Excelente",
       "booelanIsActive": false
     }
