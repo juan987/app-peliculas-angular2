@@ -1,14 +1,19 @@
+  thead tr {
+    cursor: pointer;
+    background-color: lightseagreen;
+  }
+
   tbody tr {
     cursor: pointer;
     position: relative;
     left: 0;
-    background-color: #EEE;
     margin: .5em;
     padding: .3em 0;
     height: 1.6em;
     border-radius: 4px;
     text-align: right;
   }
+
   tbody tr.selected:hover {
     background-color: #BBD8DC !important;
     color: white;
@@ -46,4 +51,14 @@
 
   .pruebaFilaClicked {
     		background: red;
+  }
+
+
+  <!-- stilos requeridos en el form para ver lo rojito y lo verde -->
+  .ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+  }
+
+  .ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
   }
