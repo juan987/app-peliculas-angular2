@@ -2,7 +2,7 @@
   "peliculas": [
     {
       "id": 4,
-      "titulo": "ewfew mod",
+      "titulo": "ewfew ",
       "director": "ffwerfw mod",
       "sinopsis": "wfwfwwf",
       "fecha": "2016-11-13",
@@ -34,6 +34,24 @@
       "sinopsis": "twwtwrtwtw",
       "fecha": "2016-11-25",
       "valoracion": "Muy Buena",
+      "booelanIsActive": false
+    },
+    {
+      "id": 9,
+      "titulo": "trrrr mod",
+      "director": "yttyu",
+      "sinopsis": "uiuiii",
+      "fecha": "2016-11-17",
+      "valoracion": "fgwdhshhs",
+      "booelanIsActive": false
+    },
+    {
+      "id": 10,
+      "titulo": "iiiii",
+      "director": "iiiii",
+      "sinopsis": "iiiii",
+      "fecha": "2016-11-24",
+      "valoracion": "Buena",
       "booelanIsActive": false
     }
   ]
