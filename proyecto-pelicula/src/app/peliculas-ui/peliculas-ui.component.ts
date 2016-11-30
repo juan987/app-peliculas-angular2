@@ -62,65 +62,56 @@ colDirector: string = "Director";
     this.getPelisHttp();
   }
 
-
   //variable para controlar el tercer click seguido en la misma fila
   tercerClickEnLaMismaFila: number = 0;
 
   clickEnFila(miFila: any, indiceFilaTabla: any): void{
-    console.log("Has hecho click en una fila, con indice=   " +indiceFilaTabla);
-    this.booleanFilaClicked = true;
+        console.log("Has hecho click en una fila, con indice=   " +indiceFilaTabla);
+        this.booleanFilaClicked = true;
 
-    
+        //console.log("variable mi fila:    " +miFila.id)
+        //console.log("variable mi fila:    " +miFila.titulo)
+        //console.log("variable mi fila:    " +miFila.director)
 
-    //console.log("variable mi fila:    " +miFila.id)
-    //console.log("variable mi fila:    " +miFila.titulo)
-    //console.log("variable mi fila:    " +miFila.director)
+        //this.peliculaPojo = miFila;
 
-    //this.peliculaPojo = miFila;
+        this.peliculaPojo.setId(miFila._id);
+        this.peliculaPojo.setTitulo(miFila.titulo);
+        this.peliculaPojo.setDirector(miFila.director);
+        this.peliculaPojo.setSinopsis(miFila.sinopsis);
+        this.peliculaPojo.setFecha(miFila.fecha);
+        this.peliculaPojo.setValoracion(miFila.valoracion);
 
-    this.peliculaPojo.setId(miFila.id);
-    this.peliculaPojo.setTitulo(miFila.titulo);
-    this.peliculaPojo.setDirector(miFila.director);
-    this.peliculaPojo.setSinopsis(miFila.sinopsis);
-    this.peliculaPojo.setFecha(miFila.fecha);
-    this.peliculaPojo.setValoracion(miFila.valoracion);
-
-
-    //si tecleo dos veces seguidas la misma fila,la segunda vez no entra en el if
-    //Y se ejecuta la segunda parte del html en el click
-    if(this.hayUnaFilaClickada != -1 && indiceFilaTabla != this.hayUnaFilaClickada){
-    //if(indiceFilaTabla != this.hayUnaFilaClickada){
-      console.log('a ver si funciona lo de los botones')
-      this.pelisListHttp[this.hayUnaFilaClickada].booelanIsActive = false;
-      this.tercerClickEnLaMismaFila = 0;
-    }
-
-    /*
-    if(this.hayUnaFilaClickada == indiceFilaTabla){
-      this.tercerClickEnLaMismaFila++;
-      //Clear el formulario
-      if(this.tercerClickEnLaMismaFila <= 1){
-        this.reiniciarPeliculaPojo();
-      }else{
-        this.tercerClickEnLaMismaFila = 0;
-      }
-    }
-    */
-
-      
-      if(this.hayUnaFilaClickada == indiceFilaTabla){
-        if(this.muestraBotonesModAndDel == false){
-          this.reiniciarPeliculaPojo();
-          //this.muestraBotonesModAndDel = !this.muestraBotonesModAndDel;
-          this.muestraBotonesModAndDel = true;
+        //si tecleo dos veces seguidas la misma fila,la segunda vez no entra en el if
+        //Y se ejecuta la segunda parte del html en el click
+        if(this.hayUnaFilaClickada != -1 && indiceFilaTabla != this.hayUnaFilaClickada){
+        //if(indiceFilaTabla != this.hayUnaFilaClickada){
+          console.log('a ver si funciona lo de los botones')
+          this.pelisListHttp[this.hayUnaFilaClickada].booelanIsActive = false;
+          this.tercerClickEnLaMismaFila = 0;
         }
-      }
-      
 
-    this.hayUnaFilaClickada = indiceFilaTabla;
+        /*
+        if(this.hayUnaFilaClickada == indiceFilaTabla){
+          this.tercerClickEnLaMismaFila++;
+          //Clear el formulario
+          if(this.tercerClickEnLaMismaFila <= 1){
+            this.reiniciarPeliculaPojo();
+          }else{
+            this.tercerClickEnLaMismaFila = 0;
+          }
+        }
+        */
+          
+          if(this.hayUnaFilaClickada == indiceFilaTabla){
+            if(this.muestraBotonesModAndDel == false){
+              this.reiniciarPeliculaPojo();
+              //this.muestraBotonesModAndDel = !this.muestraBotonesModAndDel;
+              this.muestraBotonesModAndDel = true;
+            }
+          }
     
-    
-
+        this.hayUnaFilaClickada = indiceFilaTabla;
   }//Fin de clickEnFila
 
   clickGuardar(): void{
@@ -185,34 +176,6 @@ colDirector: string = "Director";
   }//Fin de clickOrdenarPorDirector
 
 
-//para coger los datos de las peliculas
-  getDatos2(): PeliculaPojo[]{
-    //return this.listaDePeliculas;
-
-    //Con un servicio local
-    return this.servicioPeliculasDaoService.getListaPeliculas();
-
-    //Con el servicio http
-    //return this.getPelisHttp();
-  }
-
-
-//Datos de la tabla pequeña
-  getDatos(): Pelicula[]{
-    return this.peliculasArray;
-  }
-
-  private peliculasArray: Pelicula[] = [
-    { id: 1, titulo: 'Mr. Nice', director: 'juan miguel', sinopsis: 'animacion', clasificacion: 'buena' },
-    { id: 2, titulo: 'Mr. Nice', director: 'juan miguel', sinopsis: 'animacion', clasificacion: 'buena' },
-    { id: 3, titulo: 'Mr. Nice', director: 'juan miguel', sinopsis: 'animacion', clasificacion: 'buena' },
-    { id: 4, titulo: 'Mr. Nice', director: 'juan miguel', sinopsis: 'animacion', clasificacion: 'buena' },
-    { id: 5, titulo: 'Mr. Nice', director: 'juan miguel', sinopsis: 'animacion', clasificacion: 'buena' },
-    { id: 6, titulo: 'Mr. Nice', director: 'juan miguel', sinopsis: 'animacion', clasificacion: 'buena' },
-    { id: 7, titulo: 'Mr. Nice', director: 'juan miguel', sinopsis: 'animacion', clasificacion: 'buena' },
-    { id: 8, titulo: 'Mr. Nice', director: 'juan miguel', sinopsis: 'animacion', clasificacion: 'buena' },
-  ];
-  //FIN Datos de la tabla pequeña
 
 //Metodos relacionados con http
   getPelisHttp() {
@@ -260,6 +223,7 @@ colDirector: string = "Director";
                      .subscribe(
                        //la funcion delete de typicode no devuelve nada, peliculaPojo es undefined.
                        peliculaPojo  => {console.log('Pelicula borrada con id:   ' +this.peliculaPojo.getId());
+                       //peliculaPojo  => {console.log('Pelicula borrada con id:   ' +peliculaPojo.peli;
                        this.getPelisHttp();
                        this.reiniciarPeliculaPojo();
                        this.muestraBotonesModAndDel = true;
@@ -290,13 +254,51 @@ colDirector: string = "Director";
     this.peliculaPojo = new PeliculaPojo("","","","","","");
   }
 
+/*
 
-}
+//No uso esto que fue el servicio con el array. Ahora uso http.
 
-export class Pelicula {
-  id: number;
-  titulo: string;
-  director: string;
-  sinopsis: string;
-  clasificacion: string;
-}
+//para coger los datos de las peliculas
+  getDatos2(): PeliculaPojo[]{
+    //return this.listaDePeliculas;
+
+    //Con un servicio local
+    return this.servicioPeliculasDaoService.getListaPeliculas();
+
+    //Con el servicio http
+    //return this.getPelisHttp();
+  }
+*/
+
+/*
+//Datos de la tabla pequeña
+  getDatos(): Pelicula[]{
+    return this.peliculasArray;
+  }
+
+  private peliculasArray: Pelicula[] = [
+    { id: 1, titulo: 'Mr. Nice', director: 'juan miguel', sinopsis: 'animacion', clasificacion: 'buena' },
+    { id: 2, titulo: 'Mr. Nice', director: 'juan miguel', sinopsis: 'animacion', clasificacion: 'buena' },
+    { id: 3, titulo: 'Mr. Nice', director: 'juan miguel', sinopsis: 'animacion', clasificacion: 'buena' },
+    { id: 4, titulo: 'Mr. Nice', director: 'juan miguel', sinopsis: 'animacion', clasificacion: 'buena' },
+    { id: 5, titulo: 'Mr. Nice', director: 'juan miguel', sinopsis: 'animacion', clasificacion: 'buena' },
+    { id: 6, titulo: 'Mr. Nice', director: 'juan miguel', sinopsis: 'animacion', clasificacion: 'buena' },
+    { id: 7, titulo: 'Mr. Nice', director: 'juan miguel', sinopsis: 'animacion', clasificacion: 'buena' },
+    { id: 8, titulo: 'Mr. Nice', director: 'juan miguel', sinopsis: 'animacion', clasificacion: 'buena' },
+  ];
+  //FIN Datos de la tabla pequeña
+  */
+
+}//Fin de PeliculasUiComponent
+
+
+//No lo uso
+/*
+  export class Pelicula {
+    id: number;
+    titulo: string;
+    director: string;
+    sinopsis: string;
+    clasificacion: string;
+  }
+*/

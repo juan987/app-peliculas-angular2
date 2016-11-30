@@ -6,7 +6,7 @@ export class PeliculaPojo {
 
     //He tenido que cambiar todas las properties de PeliculaPojo a public,
     //por que sort no reconocia los getters en la clasew peliculas-ui.component.ts
-    constructor( public id: string,
+    constructor( public _id: string,
                  public titulo: string,
                  public director: string,
                  public sinopsis: string,
@@ -17,7 +17,7 @@ export class PeliculaPojo {
 
                 //Getters
                 setId(id: string): void{
-                    this.id = id;
+                    this._id = id;
                 }
                 setTitulo(titulo: string): void{
                     this.titulo = titulo;
@@ -41,7 +41,7 @@ export class PeliculaPojo {
 
                 //Getters
                 getId(): string{
-                    return this.id;
+                    return this._id;
                 }
 
                 getTitulo(): string{
@@ -66,7 +66,7 @@ export class PeliculaPojo {
 
     toString(): string{
         return "pelicula: \n\t ID:  "
-                +this.id +"\n\t"
+                +this._id +"\n\t"
                 +"Titulo:   " +this.titulo +"\n\t"
                 +"Director: " +this.director +"\n\t"
                 +"Director: " +this.sinopsis +"\n\t"

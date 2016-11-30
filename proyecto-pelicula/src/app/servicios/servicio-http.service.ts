@@ -76,6 +76,7 @@ export class ServicioHttpService {
     private urlPut = 'http://localhost:3000/peliculas/';//Url para modificar
 
     putPeli (peliculaPojo: PeliculaPojo): Observable<PeliculaPojo> {
+    /*
     let nuevaPeliJson = {
     "id":peliculaPojo.getId(), 
     "titulo": peliculaPojo.getTitulo(),
@@ -84,6 +85,7 @@ export class ServicioHttpService {
     "fecha": peliculaPojo.getFecha(),
     "valoracion": peliculaPojo.getValoracion()
     };
+    */
 
     
     let headers = new Headers({ 'Content-Type': 'application/json' });
@@ -102,6 +104,7 @@ export class ServicioHttpService {
 
     //deletePeli (peliculaPojo: PeliculaPojo): Observable<PeliculaPojo> {
     deletePeli (peliculaPojo: PeliculaPojo): Observable<PeliculaPojo> {
+    /*
     let nuevaPeliJson = {
     "id":peliculaPojo.getId(), 
     "titulo": peliculaPojo.getTitulo(),
@@ -110,6 +113,7 @@ export class ServicioHttpService {
     "fecha": peliculaPojo.getFecha(),
     "valoracion": peliculaPojo.getValoracion()
     };
+    */
 
     
     let headers = new Headers({ 'Content-Type': 'application/json' });

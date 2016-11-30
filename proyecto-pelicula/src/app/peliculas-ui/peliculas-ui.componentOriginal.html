@@ -1,5 +1,36 @@
-<div class="container">
+<h1 class="elementoOculto">Peliculas app, UI ver 1.0.0</h1>
+<h2 class="elementoOculto">Tabla de peliculas</h2>
+<table border="2" class="elementoOculto">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Pelicula</th>
+      <th>Director</th>
+      <th>Sinopsis</th>
+      <th>Clasificacion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let peli of getDatos()">
+      <td>{{peli.id}}</td>
+      <td>{{peli.titulo}}</td>
+      <td>{{peli.director}}</td>
+      <td>{{peli.sinopsis}}</td>
+      <td>{{peli.clasificacion}}</td>
+    </tr>
+  </tbody>
+</table>
 
+<h1 class="elementoOculto">Componentes del proyecto pelicula Jquery con bootstrap</h1>
+<div class="container">
+    <!-- Cosas que no uso o he cambiado 
+    	<p>Nombre: <input type="text" name="nombre" required pattern="([a-zA-ZñÑ]{3,}uben|Victor)" /></p>
+        <p><input type="submit" value="enviar"></p>
+    -->
+    <!-- En casa el 27oct16 -->
+    <input class="elementoOculto" type="button" id="serializarFormulario" value="Serializar formulario"/>
+    <div class="elementoOculto" id="resultadoSerializacion"></div>
+    <!-- FIN de En casa el 27oct16 -->
 
     <h1>Formulario de Peliculas</h1>
 	<form role="form" class="form-horizontal" #form="ngForm" id="miFormulario" action="#">
@@ -78,10 +109,10 @@
             <div class="col-sm-offset-2 col-sm-10">
                 <input type="reset" class="btn btn-primary" 
                                         (click)="muestraBotonesModAndDel = true"> 
-                <input type="button" class="btn btn-primary" id="guardar" value="Guardar" (click)="clickGuardar(); form.reset()" 
+                <input type="button" class="btn btn-primary" id="guardar" value="Guardar" (click)="clickGuardar()" 
                                         [disabled]="form.invalid || !muestraBotonesModAndDel"/>
                 <input type="button" class="btn btn-primary" id="modificar" value="Modificar" 
-                                        (click)="clickModificar(); form.reset()" [disabled]="muestraBotonesModAndDel" />
+                                        (click)="clickModificar()" [disabled]="muestraBotonesModAndDel" />
                 <input type="button" class="btn btn-primary" id="borrar" value="Borrar" 
                                         (click)="clickBorrar()"  [disabled]="muestraBotonesModAndDel"/>
                 <input class="elementoOculto" type="button" id="borrar" value="Borrar"/>
