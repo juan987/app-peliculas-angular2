@@ -90,6 +90,20 @@
     </fieldset>
 	</form>
 
+
+    <!-- Autocomplete el 9dic16  -->
+    <div>
+        <form [ngFormModel]="searchForm">
+            <label for="searchField">Search for a customer</label>
+            <input ngControl="searchField" id="search">        
+        </form>        
+        <div *ngFor="#result of results | async">
+            <div>{{result.name}}</div>
+        </div>
+    </div
+    <!-- FIN de Autocomplete el 9dic16  -->
+
+
     <h1>Base de Datos de Peliculas</h1>
 
     <input class="elementoOculto" type="button" id="peticion_ajax" value="Carga con JQuery"/>

@@ -7,6 +7,12 @@ import {ServicioHttpService} from '../servicios/Servicio-Http.Service';
 // Add the RxJS Observable operators. para gestionar HTTP
 import './rxjs-operators';
 
+//Para gestionar el autocomplete
+import {FormBuilder, Validators} from '@angular/forms';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/Rx';
+import { Http, Response } from '@angular/http';
+//Fin autocomplete
 
 @Component({
   selector: 'app-peliculas-ui',
@@ -51,12 +57,41 @@ colDirector: string = "Director";
   boolFecha: boolean = true;
   boolValoracion: boolean = true;
 
+
+  //Variables de autocomplete
+  searchForm: any;
+  results: Observable<any>;
+
+
   constructor(private servicioPeliculasDaoService: ServicioPeliculasDaoService,
-              private servicioHttpService: ServicioHttpService) { 
+              private servicioHttpService: ServicioHttpService,
+              private fb: FormBuilder, private http: Http) { 
     this.peliculaPojo = new PeliculaPojo("","","","","","");
     //this.listaDePeliculas = servicioPeliculasDaoService.getListaPeliculas();
     //this.servicioPeliculasDaoService = servicioPeliculasDaoService;
-  }
+
+    //*******************************************************************************************
+    // Autocomplete 9dic16 en casa
+    //Como en : http://venckicode.blogspot.com.es/2016/06/type-ahead-search-with-angular2-and.html
+    //*******************************************************************************************
+
+        this.searchForm = this.fb.group({
+            'searchField': ['']
+        });
+
+        var ctrl = this.searchForm.controls.searchField;
+
+        this.results = ctrl.valueChanges
+                    .debounceTime(500)
+                    .switchMap(fieldValue => this.http.get(`http://localhost:3001/api/search?term=${fieldValue}`))
+                    .map(res => res.json());
+
+    //***********************************
+    // FIN de Autocomplete 9dic16 en casa
+    //***********************************
+
+
+  }//Fin del constructor
 
   ngOnInit() {
     this.getPelisHttp();
@@ -288,6 +323,11 @@ colDirector: string = "Director";
   ];
   //FIN Datos de la tabla pequeña
   */
+
+
+
+
+
 
 }//Fin de PeliculasUiComponent
 
