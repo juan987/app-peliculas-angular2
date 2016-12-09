@@ -92,15 +92,38 @@
 
 
     <!-- Autocomplete el 9dic16  -->
+
+<div>
+    <form  [formGroup]="searchForm">
+        <label for="searchField">Search for a customer</label>
+        <input type="text" ngControl="searchField" id="searchField" name="searchField" 
+                    [formControl]="searchForm.controls['searchField']">        
+    </form>    
+    
+    <div *ngFor="let result of results | async">
+        <div>{{result.titulo}}</div>
+    </div>
+
+</div>
+
+<!--
     <div>
-        <form [ngFormModel]="searchForm">
+
+
+
+        <form #searchForm="ngModel"  role="form" class="form-horizontal"  id="miFormulario" action="#">
             <label for="searchField">Search for a customer</label>
-            <input ngControl="searchField" id="search">        
+            <input #searchField="ngModel" id="search" class="form-control"> 
+
+                  
         </form>        
-        <div *ngFor="#result of results | async">
+        <div *ngFor="let result of results | async">
             <div>{{result.titulo}}</div>
         </div>
-    </div
+    </div>
+
+-->
+
     <!-- FIN de Autocomplete el 9dic16  -->
 
 

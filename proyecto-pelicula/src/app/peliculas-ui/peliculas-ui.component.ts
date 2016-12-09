@@ -8,7 +8,7 @@ import {ServicioHttpService} from '../servicios/Servicio-Http.Service';
 import './rxjs-operators';
 
 //Para gestionar el autocomplete
-import {FormBuilder, Validators} from '@angular/forms';
+import {FormBuilder, Validators, FormGroup  } from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
 import { Http, Response } from '@angular/http';
@@ -59,7 +59,7 @@ colDirector: string = "Director";
 
 
   //Variables de autocomplete
-  searchForm: any;
+  searchForm: FormGroup;
   results: Observable<any>;
 
 
@@ -73,18 +73,27 @@ colDirector: string = "Director";
     //*******************************************************************************************
     // Autocomplete 9dic16 en casa
     //Como en : http://venckicode.blogspot.com.es/2016/06/type-ahead-search-with-angular2-and.html
+    //Y como en http://blog.ng-book.com/the-ultimate-guide-to-forms-in-angular-2/
+    //para los temas de 
+    // ReactiveFormsModule gives us directives like formControl and ngFormGroup
     //*******************************************************************************************
+        
+        
         this.searchForm = this.fb.group({
             'searchField': ['']
         });
 
-        var ctrl = this.searchForm.controls.searchField;
+        //var ctrl = this.searchForm.controls.searchField;
+        var ctrl = this.searchForm.controls['searchField']
+        //var ctrl = this.searchForm.controls.searchField;
 
         this.results = ctrl.valueChanges
                     .debounceTime(500)
                     //.switchMap(fieldValue => this.http.get(`http://localhost:3001/api/search?term=${fieldValue}`))
-                    .switchMap(fieldValue => this.http.get(`http://localhost:3000/peliculas/autocomplete` +fieldValue))
+                    .switchMap(fieldValue => this.http.get(`http://localhost:3000/peliculas/autocomplete/` +fieldValue))
                     .map(res => res.json());
+        
+
     //***********************************
     // FIN de Autocomplete 9dic16 en casa
     //***********************************

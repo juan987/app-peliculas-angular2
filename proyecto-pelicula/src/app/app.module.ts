@@ -4,6 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule  } from '@angular/http';
 //He agregado JsonpModule  en casa, 11nov16
 
+//agregado ReactiveFormsModule   para el autocomplete, 9dic16
+import { ReactiveFormsModule } from '@angular/forms';
+
+
+
+
 import { AppComponent } from './app.component';
 import { PeliculasUiComponent } from './peliculas-ui/peliculas-ui.component';
 
@@ -16,7 +22,8 @@ import { PeliculasUiComponent } from './peliculas-ui/peliculas-ui.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    JsonpModule 
+    JsonpModule ,
+    ReactiveFormsModule
   ],
   providers: [],
   //bootstrap: [AppComponent, PeliculasUiComponent]
