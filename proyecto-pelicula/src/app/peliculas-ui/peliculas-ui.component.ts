@@ -74,7 +74,6 @@ colDirector: string = "Director";
     // Autocomplete 9dic16 en casa
     //Como en : http://venckicode.blogspot.com.es/2016/06/type-ahead-search-with-angular2-and.html
     //*******************************************************************************************
-
         this.searchForm = this.fb.group({
             'searchField': ['']
         });
@@ -83,9 +82,9 @@ colDirector: string = "Director";
 
         this.results = ctrl.valueChanges
                     .debounceTime(500)
-                    .switchMap(fieldValue => this.http.get(`http://localhost:3001/api/search?term=${fieldValue}`))
+                    //.switchMap(fieldValue => this.http.get(`http://localhost:3001/api/search?term=${fieldValue}`))
+                    .switchMap(fieldValue => this.http.get(`http://localhost:3000/peliculas/autocomplete` +fieldValue))
                     .map(res => res.json());
-
     //***********************************
     // FIN de Autocomplete 9dic16 en casa
     //***********************************
