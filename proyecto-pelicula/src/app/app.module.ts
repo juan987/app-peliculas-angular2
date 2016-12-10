@@ -12,11 +12,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { PeliculasUiComponent } from './peliculas-ui/peliculas-ui.component';
+import { Carrousel1Component } from './carrousel-1/carrousel-1.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PeliculasUiComponent
+    PeliculasUiComponent,
+    Carrousel1Component
   ],
   imports: [
     BrowserModule,
