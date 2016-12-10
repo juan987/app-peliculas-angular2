@@ -54,7 +54,7 @@
   }
 
 
-  <!-- stilos requeridos en el form para ver lo rojito y lo verde -->
+  /* stilos requeridos en el form para ver lo rojito y lo verde */
   .ng-valid[required], .ng-valid.required  {
   border-left: 5px solid #42A948; /* green */
   }
@@ -62,3 +62,39 @@
   .ng-invalid:not(form)  {
     border-left: 5px solid #a94442; /* red */
   }
+
+/* Estlos para el lateral, me los traje del ejemplo ferrari */
+  section#lateral {
+    width: 20%;
+    min-width: 150px;
+    float: right;
+    padding-left: 15px;
+}
+
+section#lateral a {
+    text-decoration: none;
+    color: white;
+}
+section ul {
+    padding: 0px;
+    box-shadow: 5px 5px 0 #333;
+}
+section ul li{
+    /* cambio la lista para que esté en la misma linea */
+    display: block;
+    background: rgba(0,0,0,.5);
+    padding: 10px;
+}
+
+#contenedor {
+    background: yellow;
+    /* indica margenes top-bottom y left-right
+    Si indico el segundo como auto, le estoy indicando que se centre */
+    margin: 0 auto;
+    /* Si deseo no ocupar todo el ancho, puedo indicar los límites.*/
+    max-width: 1000px;
+    /* En vez de introducir un margin a cada elemento dentro del contenedor, 
+    defino un border y consigo el mismo efecto */
+    border: 5px solid yellow;
+    border-radius: 5px;
+}
