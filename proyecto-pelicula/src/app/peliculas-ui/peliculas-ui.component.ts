@@ -89,9 +89,13 @@ colDirector: string = "Director";
 
         this.results = ctrl.valueChanges
                     .debounceTime(500)
+                    .distinctUntilChanged()
                     //.switchMap(fieldValue => this.http.get(`http://localhost:3001/api/search?term=${fieldValue}`))
-                    .switchMap(fieldValue => this.http.get(`http://localhost:3000/peliculas/autocomplete/` +fieldValue))
+                    .switchMap(fieldValue => 
+                        //console.log('en switch map, valor de fieldvalue: ' +fieldValue);
+                        this.http.get(`http://localhost:3000/peliculas/autocomplete/` +fieldValue))
                     .map(res => res.json());
+                    
         
 
     //***********************************

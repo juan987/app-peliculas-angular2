@@ -19,6 +19,15 @@ export class ServicioHttpService {
                     .catch(this.handleError);
   }
 
+//Todavia no lo estoy usando
+//Metodo llamado al hacer click en un item del autocomplete
+//Agregado el 10dic16
+  getPelicula(result: any): Observable<PeliculaPojo[]>{
+    return this.http.get(this.urlGet +result._id)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
 
   private extractData(res: Response) {
     console.log("En http service, la response es:   " +res);

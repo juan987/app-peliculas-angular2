@@ -96,14 +96,22 @@
 <div>
     <form  [formGroup]="searchForm">
         <label for="searchField">Search for a customer</label>
+        <!--
         <input type="text" ngControl="searchField" id="searchField" name="searchField" 
-                    [formControl]="searchForm.controls['searchField']">        
-    </form>    
-    
-    <div *ngFor="let result of results | async">
-        <div>{{result.titulo}}</div>
-    </div>
+                    [formControl]="searchForm.controls['searchField']"> 
+        -->
+        <input type="text" id="searchField" name="searchField"
+                                    [formControl]="searchForm.controls['searchField']"> 
+        <!--
+        <div *ngFor="let result of results | async">
+            <div>{{result.titulo}}</div>
+        </div> 
+        --> 
 
+        <ul>
+            <li *ngFor="let result of results | async">{{result.titulo}}</li>
+        </ul>     
+    </form>    
 </div>
 
 <!--
