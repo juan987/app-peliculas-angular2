@@ -71,7 +71,7 @@ colDirector: string = "Director";
   private messages: MensajeChat1[] = [];
   private message: MensajeChat1;
   private message_de_usuario_conectado: MensajeChat1;
-  private message_de_DB_Modificada: MensajeChat1 = new MensajeChat1("","",1);
+  private message_de_DB_Modificada: MensajeChat1;
   private connection;
   //para detectar que alguien ha cambiado la base de datos a traves del chat
   private nombrePeliculaInfoChat: string;
@@ -129,6 +129,11 @@ colDirector: string = "Director";
     //para mantenerse a la escucha
     this.message = new MensajeChat1("","",0);
     this.message_de_usuario_conectado = new MensajeChat1("","",0);
+    this.message_de_DB_Modificada = new MensajeChat1("","",1);
+    
+
+
+
     this.connection = this.service.getMessages().subscribe(
       (newMessage: MensajeChat1)=>{
           console.log("New message received!");
@@ -409,14 +414,22 @@ colDirector: string = "Director";
 //***************************************************************************
 
 
-
+  //Boton del chat para enviar mensaje
   sendMessage(){
     console.log("Mensaje a enviar por component: " + this.message)
     this.service.sendMessage(this.message);
   }
 
+  //Boton del chat para vaciar el char
+  vaciarChat(){
+    console.log("Vaciar el chat ")
+    this.messages = [];  
+  }
+
+  //Mensaje de chat indicar que la db ha sido modificada
   sendMessageDbModificada(messageDbModificada: MensajeChat1){
     console.log("Mensaje a enviar por component de base de datos modificada: " + this.message)
+    this.message_de_DB_Modificada.user = this.message.user;
     this.service.sendMessageDbModificada(messageDbModificada);
   }
 
