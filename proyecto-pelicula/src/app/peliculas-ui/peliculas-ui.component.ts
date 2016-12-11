@@ -14,15 +14,20 @@ import 'rxjs/Rx';
 import { Http, Response } from '@angular/http';
 //Fin autocomplete
 
+//Para el chat, el 11Dic16
+import {OnDestroy } from '@angular/core';
+import { ServicioChatService } from '../servicios/servicio-chat.service';
+import { MensajeChat1 } from '../modelo-datos/mensaje-chat-1';
+
 @Component({
   selector: 'app-peliculas-ui',
   templateUrl: './peliculas-ui.component.html',
   styleUrls: ['./peliculas-ui.component.css'],
-  providers: [ServicioPeliculasDaoService, ServicioHttpService]
+  providers: [ServicioPeliculasDaoService, ServicioHttpService, ServicioChatService]
 })
 
 
-export class PeliculasUiComponent implements OnInit {
+export class PeliculasUiComponent implements OnInit, OnDestroy {
 
 //Variables para mostrar cuando una columna no esta ordenada, 
 //esta ordenada en orden ascendente o esta ordenada en orden descendente
@@ -62,10 +67,16 @@ colDirector: string = "Director";
   searchForm: FormGroup;
   results: Observable<any>;
 
+  //Variables del chat, 11Dic16
+  private messages: MensajeChat1[] = [];
+  private message: MensajeChat1;
+  private connection;
+
 
   constructor(private servicioPeliculasDaoService: ServicioPeliculasDaoService,
               private servicioHttpService: ServicioHttpService,
-              private fb: FormBuilder, private http: Http) { 
+              private fb: FormBuilder, private http: Http,
+              private service: ServicioChatService) { 
     this.peliculaPojo = new PeliculaPojo("","","","","","");
     //this.listaDePeliculas = servicioPeliculasDaoService.getListaPeliculas();
     //this.servicioPeliculasDaoService = servicioPeliculasDaoService;
@@ -107,6 +118,15 @@ colDirector: string = "Director";
 
   ngOnInit() {
     this.getPelisHttp();
+
+    //Codigo en el ngOnInit del chat
+    this.message = new MensajeChat1("","");
+    this.connection = this.service.getMessages().subscribe(
+      (newMessage: MensajeChat1)=>{
+          console.log("New message received!");
+          this.messages.push(newMessage);
+      }
+    )
   }
 
   //variable para controlar el tercer click seguido en la misma fila
@@ -336,10 +356,35 @@ colDirector: string = "Director";
   //FIN Datos de la tabla pequeña
   */
 
+//***************************************************************************
+// Codigo para el chat con el servicio servicio-chat.service, el 11Dic16
+//***************************************************************************
 
 
 
+  sendMessage(){
+    console.log("Mensaje a enviar por component: " + this.message)
+    this.service.sendMessage(this.message);
+  }
 
+  //Ya tengo ngOnInit arriba, pongo este codigo alli
+  /*
+  ngOnInit() {
+    this.message = new Message("","");
+    this.connection = this.service.getMessages().subscribe(
+      (newMessage: Message)=>{
+          console.log("New message received!");
+          this.messages.push(newMessage);
+      }
+    )
+  }
+  */
+  ngOnDestroy(){
+    this.connection.unsubscribe();
+  }
+//******************************************************************************
+// FIN de Codigo para el chat con el servicio servicio-chat.service, el 11Dic16
+//******************************************************************************
 
 }//Fin de PeliculasUiComponent
 

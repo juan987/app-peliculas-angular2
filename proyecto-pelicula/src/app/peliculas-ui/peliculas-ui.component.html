@@ -20,8 +20,9 @@
 
 <!-- Cargar el modulo del carrousel -->
     <app-carrousel-1> Cargando carrousel ui </app-carrousel-1>
+<!-- Fin de cargar el modulo carrousel -->
 
-    <!-- seccion lateral que me traje del ejemplo ferrari -->
+<!-- seccion lateral que me traje del ejemplo ferrari -->
     <section id="lateral">
         <nav id="Menu">
             <ul>
@@ -46,8 +47,19 @@
                 viverra nisi rutrum. Praesent hendrerit, massa et venenatis tempor.
             </article>
         </aside>
+
+        <!-- Html del chat -->
+        <div *ngFor="let msg of messages">
+            {{msg.user}} - {{msg.content}}
+        </div>
+        <br/>Mensaje: 
+        <input type="text" [(ngModel)]="message.content">
+        <button (click)="sendMessage()"> Enviar mensaje al chat</button>
+
+        <!-- FIN Html del chat -->
+
     </section>
-    <!-- FIN seccion lateral que me traje del ejemplo ferrari -->
+<!-- FIN seccion lateral que me traje del ejemplo ferrari -->
 
     <h1>Formulario de Peliculas</h1>
 	<form role="form" class="form-horizontal" #form="ngForm" id="miFormulario" action="#">
