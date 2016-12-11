@@ -69,6 +69,14 @@
     min-width: 150px;
     float: right;
     padding-left: 15px;
+
+}
+
+  section#lateral #miChat {
+
+    height: 250px;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 
 section#lateral a {
@@ -87,14 +95,18 @@ section ul li{
 }
 
 #contenedor {
-    background: yellow;
+    /* background: white; */
     /* indica margenes top-bottom y left-right
     Si indico el segundo como auto, le estoy indicando que se centre */
     margin: 0 auto;
+    /* coge el ancho del padre, que es el body */
+    width:auto;
     /* Si deseo no ocupar todo el ancho, puedo indicar los límites.*/
-    max-width: 1000px;
+    /* max-width: 1000px;  */
     /* En vez de introducir un margin a cada elemento dentro del contenedor, 
     defino un border y consigo el mismo efecto */
-    border: 5px solid yellow;
-    border-radius: 5px;
+
+    /* quito el borde */
+    /* border: 5px solid red;
+    border-radius: 5px; */
 }

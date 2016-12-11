@@ -1,7 +1,7 @@
 export class MensajeChat1 {
         constructor(
-        private user: string,
-        private content: string
+        public user: string,
+        public content: string
     ){}
     toString(){
         return this.user + " " + this.content;

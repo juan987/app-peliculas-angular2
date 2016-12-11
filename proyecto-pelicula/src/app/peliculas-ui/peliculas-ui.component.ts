@@ -70,6 +70,7 @@ colDirector: string = "Director";
   //Variables del chat, 11Dic16
   private messages: MensajeChat1[] = [];
   private message: MensajeChat1;
+  private message_de_usuario_conectado: MensajeChat1;
   private connection;
 
 
@@ -120,11 +121,24 @@ colDirector: string = "Director";
     this.getPelisHttp();
 
     //Codigo en el ngOnInit del chat
+    //para mantenerse a la escucha
     this.message = new MensajeChat1("","");
+    this.message_de_usuario_conectado = new MensajeChat1("","");
     this.connection = this.service.getMessages().subscribe(
       (newMessage: MensajeChat1)=>{
           console.log("New message received!");
           this.messages.push(newMessage);
+
+          //Hay que discriminar si el mensaje es para informar de un
+          //usuario que se acaba de conectar,
+          //y si es asi, hacemos broadcast para informar al resto
+          let  comparar = newMessage.user.localeCompare('nuevo_usuario');
+          if(comparar == 0){
+            this.message_de_usuario_conectado.content = "Se acaba de conectar";
+            console.log("Broadcast notificando que me acabo de conectar " + this.message_de_usuario_conectado)
+            this.service.sendMessage(this.message_de_usuario_conectado);
+          }
+
       }
     )
   }

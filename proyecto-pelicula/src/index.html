@@ -42,6 +42,24 @@ integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7T
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!-- fin de MATERIALIZE -->
 
+<style>
+    body {
+        /* background: cadetblue; */
+        /* indica margenes top-bottom y left-right
+        Si indico el segundo como auto, le estoy indicando que se centre */
+        margin: 0 auto;
+        /* Si deseo no ocupar todo el ancho, puedo indicar los límites.*/
+        /* max-width: 1000px;  */
+        /* En vez de introducir un margin a cada elemento dentro del contenedor, 
+        defino un border y consigo el mismo efecto */
+        
+        /* quito el borde */
+        /* border: 5px solid yellow;
+        border-radius: 5px;  */
+    }
+
+
+</style>
 
 </head>
 <body>
@@ -54,6 +72,11 @@ integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7T
 
       //Para el side navigation
       $(".button-collapse").sideNav();
+
+      //para el efecto parallax del carrousel
+      $('.parallax').parallax();
+      
+
     });
   </script>
 
