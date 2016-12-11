@@ -12,7 +12,7 @@ export class ServicioChatService {
   private url: string = 'http://localhost:3000';
   private socket;
 
-  private mensajeDeNuevoUsuarioConnected = new MensajeChat1("","");
+  private mensajeDeNuevoUsuarioConnected = new MensajeChat1("","",0);
 
 
   constructor() { }
@@ -20,6 +20,15 @@ export class ServicioChatService {
     console.log("Enviando mensaje " + message);
     this.socket.emit('mando-un-mensaje',message);
   }
+
+//envio de mensaje 'para informar de DB modificada
+  sendMessageDbModificada(message: MensajeChat1):void{
+    console.log("Enviando mensaje de DB modificada" + message);
+    this.socket.emit('db-modificada',message);
+  }
+
+
+
   getMessages(){
     return new Observable(//alpha
       (observer)=>{//beta
@@ -34,7 +43,13 @@ export class ServicioChatService {
           this.mensajeDeNuevoUsuarioConnected.user = 'nuevo_usuario';
           observer.next(this.mensajeDeNuevoUsuarioConnected);
         });
+
         this.socket.on('mando-un-mensaje',(datos)=>{
+          observer.next(datos);
+        });
+
+        //Para informar a traves del chat de cambios en la DB
+        this.socket.on('db-modificada',(datos)=>{
           observer.next(datos);
         });
         // Una forma de unsubscribe
@@ -43,6 +58,7 @@ export class ServicioChatService {
         }
       }//Fin de beta
     );//Fin de alpha
+    }
   }
 
-}
+

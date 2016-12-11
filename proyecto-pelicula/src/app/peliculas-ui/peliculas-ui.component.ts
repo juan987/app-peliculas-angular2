@@ -71,7 +71,12 @@ colDirector: string = "Director";
   private messages: MensajeChat1[] = [];
   private message: MensajeChat1;
   private message_de_usuario_conectado: MensajeChat1;
+  private message_de_DB_Modificada: MensajeChat1 = new MensajeChat1("","",1);
   private connection;
+  //para detectar que alguien ha cambiado la base de datos a traves del chat
+  private nombrePeliculaInfoChat: string;
+
+
 
 
   constructor(private servicioPeliculasDaoService: ServicioPeliculasDaoService,
@@ -122,8 +127,8 @@ colDirector: string = "Director";
 
     //Codigo en el ngOnInit del chat
     //para mantenerse a la escucha
-    this.message = new MensajeChat1("","");
-    this.message_de_usuario_conectado = new MensajeChat1("","");
+    this.message = new MensajeChat1("","",0);
+    this.message_de_usuario_conectado = new MensajeChat1("","",0);
     this.connection = this.service.getMessages().subscribe(
       (newMessage: MensajeChat1)=>{
           console.log("New message received!");
@@ -134,7 +139,7 @@ colDirector: string = "Director";
           //y si es asi, hacemos broadcast para informar al resto
           let  comparar = newMessage.user.localeCompare('nuevo_usuario');
           if(comparar == 0){
-            this.message_de_usuario_conectado.content = "Se acaba de conectar";
+            this.message_de_usuario_conectado.content = "Esta conectado!!!";
             console.log("Broadcast notificando que me acabo de conectar " + this.message_de_usuario_conectado)
             this.service.sendMessage(this.message_de_usuario_conectado);
           }
@@ -272,6 +277,10 @@ colDirector: string = "Director";
 
   
   addPeliHttp () {
+    //Uso esta variable para informar al chat que algo ha sido
+    //modificado en la DB de peliculas
+    this.nombrePeliculaInfoChat = this.peliculaPojo.getTitulo();
+    //Este if no es muy util, la verdad.
     if (!this.peliculaPojo) { return; }
     this.servicioHttpService.addNuevaPeli(this.peliculaPojo)
                      .subscribe(
@@ -280,18 +289,34 @@ colDirector: string = "Director";
                          this.colTitulo= "Título";
                          this.colDirector= "Director";
                          this.muestraBotonesModAndDel = true;
-                         this.hayUnaFilaClickada = -1;},
+                         this.hayUnaFilaClickada = -1;
+                         //La peli nueva se ha guardado bien,
+                         //envio mensaje al chat
+                         this.message_de_DB_Modificada.content = "La pelicula: "
+                                      +this.nombrePeliculaInfoChat + ", ha sido guardada en la DB";
+                         this.sendMessageDbModificada(this.message_de_DB_Modificada);
+
+                      },
                        error =>  this.errorMessage = <any>error);
   }
 
 
   modificarPeliHttp () {
+    //Uso esta variable para informar al chat que algo ha sido
+    //modificado en la DB de peliculas
+    this.nombrePeliculaInfoChat = this.peliculaPojo.getTitulo();
     if (!this.peliculaPojo) { return; }
     this.servicioHttpService.putPeli(this.peliculaPojo)
                      .subscribe(
                        peliculaPojo => {this.miFuncionResultadoPut();
                          this.muestraBotonesModAndDel = true;
-                        this.hayUnaFilaClickada = -1;},
+                        this.hayUnaFilaClickada = -1;
+                        //La peli ha sido modificada bien,
+                        //envio mensaje al chat
+                         this.message_de_DB_Modificada.content = "La pelicula: "
+                                      +this.nombrePeliculaInfoChat + ", ha sido modificada en la DB";
+                         this.sendMessageDbModificada(this.message_de_DB_Modificada);  
+                    },
                        //this.getPelisHttp,
                        //this.miFuncionResultadoPut,
                        //peliculaPojo  => this.pelisListHttp.push(peliculaPojo),
@@ -299,6 +324,9 @@ colDirector: string = "Director";
   }
 
   deletePeliHttp(){
+    //Uso esta variable para informar al chat que algo ha sido
+    //modificado en la DB de peliculas
+    this.nombrePeliculaInfoChat = this.peliculaPojo.getTitulo();
     if (!this.peliculaPojo) { return; }
     this.servicioHttpService.deletePeli(this.peliculaPojo)
                      .subscribe(
@@ -308,7 +336,13 @@ colDirector: string = "Director";
                        this.getPelisHttp();
                        this.reiniciarPeliculaPojo();
                        this.muestraBotonesModAndDel = true;
-                      this.hayUnaFilaClickada = -1;},
+                      this.hayUnaFilaClickada = -1;
+                      //La peli ha sido modificada bien,
+                        //envio mensaje al chat
+                         this.message_de_DB_Modificada.content = "La pelicula: "
+                                      +this.nombrePeliculaInfoChat + ", ha sido borrada de la DB";
+                         this.sendMessageDbModificada(this.message_de_DB_Modificada); 
+                    },
                        error =>  this.errorMessage = <any>error);
   } 
 //Fin de metodos relacionados con http
@@ -379,6 +413,11 @@ colDirector: string = "Director";
   sendMessage(){
     console.log("Mensaje a enviar por component: " + this.message)
     this.service.sendMessage(this.message);
+  }
+
+  sendMessageDbModificada(messageDbModificada: MensajeChat1){
+    console.log("Mensaje a enviar por component de base de datos modificada: " + this.message)
+    this.service.sendMessageDbModificada(messageDbModificada);
   }
 
   //Ya tengo ngOnInit arriba, pongo este codigo alli
