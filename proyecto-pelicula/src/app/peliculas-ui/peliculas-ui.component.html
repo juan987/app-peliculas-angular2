@@ -56,19 +56,18 @@
         </aside>
 
         <!-- Html del chat -->
-        <br/>Escribe tu nombre (solo una vez): 
-        <input type="text" [(ngModel)]="message.user">
         <div id="miChat">
-            <div *ngFor="let msg of messages" >
+            <div  class="miChatClass" *ngFor="let msg of messages" >
                 {{msg.user}} - {{msg.content}}
             </div>
         </div>
+        <br/>Escribe tu nombre (solo una vez): 
+        <input type="text" [(ngModel)]="message.user">
         <br/>Escribe un mensaje: 
         <input type="text" [(ngModel)]="message.content">
         <button (click)="sendMessage()"> Enviar mensaje al chat</button>
         <br/><br/>
         <button (click)="vaciarChat()"> Vaciar el Chat</button>
-
         <!-- FIN Html del chat -->
 
     </section>
@@ -91,7 +90,9 @@
                 <!--i class="material-icons prefix">account_circle</i-->
                 <label for="titulo" class="col-sm-2 control-label">Título</label> 
                 <div class="col-sm-10">
-                    <input type="text" #titulo="ngModel" class="form-control" id="titulo" name="titulo" required autofocus [(ngModel)]="peliculaPojo.titulo"/>
+                    <!--PARA QUITAR EL AUTOFOCUS input type="text" #titulo="ngModel" class="form-control" id="titulo" 
+                    name="titulo" required autofocus [(ngModel)]="peliculaPojo.titulo"/-->
+                    <input type="text" #titulo="ngModel" class="form-control" id="titulo" name="titulo" required [(ngModel)]="peliculaPojo.titulo"/>
                     <!-- Mensaje de error para titulo-->
                     <br/>
                     <div [hidden]="titulo.valid || titulo.pristine" class="alert alert-danger">
@@ -168,13 +169,14 @@
 
     <!-- Autocomplete el 9dic16  -->
 <br/>
-<div>
+<div id="autocomplete">
     <form  [formGroup]="searchForm">
-        <label for="searchField">Buscar pelicula por titulo o autor</label>
+        <label for="searchField">Buscar pelicula por titulo o autor (Autocomplete demo)</label>
         <!--
         <input type="text" ngControl="searchField" id="searchField" name="searchField" 
                     [formControl]="searchForm.controls['searchField']"> 
         -->
+        <br/>
         <input type="text" id="searchField" name="searchField"
                                     [formControl]="searchForm.controls['searchField']"> 
         <!--

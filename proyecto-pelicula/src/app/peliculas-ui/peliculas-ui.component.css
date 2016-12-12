@@ -63,7 +63,7 @@
     border-left: 5px solid #a94442; /* red */
   }
 
-/* Estlos para el lateral, me los traje del ejemplo ferrari */
+/* Estlos para el lateral(que tiene el chat), me los traje del ejemplo ferrari */
   section#lateral {
     width: 20%;
     min-width: 150px;
@@ -77,7 +77,11 @@
     height: 250px;
     overflow: scroll;
     overflow-x: hidden;
+    
+    border-style: solid;
+    border-width: 1px;
 }
+
 
 section#lateral a {
     text-decoration: none;
@@ -109,4 +113,28 @@ section ul li{
     /* quito el borde */
     /* border: 5px solid red;
     border-radius: 5px; */
+}
+
+/*Para distinguir filas pares e impares en el chat y que se lea mejor*/
+.miChatClass:nth-child(odd) {
+    background: white;
+}
+
+.miChatClass:nth-child(even) {
+    background: lightgreen;
+}
+
+
+/*Autocomplete*/
+#searchField{
+  width: 70%;
+}
+
+#autocomplete{
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgray;
+    width: 40%;
+    padding-left: 20px;
+    padding-right: 20px
 }

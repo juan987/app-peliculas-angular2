@@ -145,13 +145,14 @@ colDirector: string = "Director";
           let  comparar = newMessage.user.localeCompare('nuevo_usuario');
           if(comparar == 0){
             this.message_de_usuario_conectado.content = "Esta conectado!!!";
+            this.message_de_usuario_conectado.user = newMessage.content;
             console.log("Broadcast notificando que me acabo de conectar " + this.message_de_usuario_conectado)
             this.service.sendMessage(this.message_de_usuario_conectado);
           }
 
       }
     )
-  }
+  }//Fin de ngOnInit
 
   //variable para controlar el tercer click seguido en la misma fila
   tercerClickEnLaMismaFila: number = 0;
