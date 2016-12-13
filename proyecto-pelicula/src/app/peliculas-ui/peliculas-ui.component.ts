@@ -150,6 +150,11 @@ colDirector: string = "Director";
             this.service.sendMessage(this.message_de_usuario_conectado);
           }
 
+          //Si el mensaje tiene la propiedad dbModificada a 1,
+          //y yo no soy el usuario que ha modificado, lanzo 
+          // actualizacion de la DB con this.getPelisHttp();
+          //No lo implemento aun.
+
       }
     )
   }//Fin de ngOnInit
